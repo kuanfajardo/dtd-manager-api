@@ -1,0 +1,29 @@
+#login_box {
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:40px;
+}
+.bg-custom {
+	background-color:#E6DBF0 !important;
+}
+
+@media(min-width: 768px) {
+	#login_box {
+		width:300px;
+	}
+}
+@media (max-width: 767px) {
+	#login_box {
+		color:#ecf0f1;
+	}
+	.btn-custom.btn-change {
+		background-color:#fff;
+		border-color:#ccc;
+		color:#333;
+	}
+	.btn-custom.btn-change:hover,.btn-custom.btn-change:focus,.btn-custom.btn-change:active,.btn-custom.btn-change.active {
+		background-color:#e6e6e6;
+		border-color:#adadad;
+		color:#333;
+	}
+}
