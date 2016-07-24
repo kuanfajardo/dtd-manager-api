@@ -88,4 +88,59 @@ class DeltsManagerAPI extends APIFramework
         // Assign local to global
         $this->User = $User;
     }
+
+    // API FUNCTIONS
+
+    // ACCOUNT FUNCTIONS
+
+    /**
+     * Endpoint function for /account. Redirects according to verb /account/<verb>
+     *
+     * @throws Exception Verb not Found
+     */
+    protected function account() {
+        switch ($this->verb) {
+            case '':
+                return $this->account_info();
+            case 'duties':
+                return $this->duties();
+            case 'punts':
+                return $this->punts();
+            case 'checkoff':
+                return $this->post_checkoff();
+            case 'settings':
+                return $this->settings();
+            case 'setting':
+                return $this->post_setting();
+            default:
+                throw new Exception('Verb Not Found');
+        }
+    }
+
+    private function account_info() {
+
+    }
+
+    private function duties() {
+
+    }
+
+    private function punts() {
+
+    }
+
+    private function post_checkoff() {
+
+    }
+
+    private function settings() {
+
+    }
+
+    private function post_setting() {
+
+    }
+
+
+
 }
