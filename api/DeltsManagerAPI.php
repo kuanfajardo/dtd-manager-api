@@ -133,8 +133,19 @@ class DeltsManagerAPI extends APIFramework
         return $arr;
     }
 
+    /**
+     * Method for /account/duties
+     *
+     * @return mixed|array Array of house duties
+     */
     private function duties() {
+        // Taken from dashboard.php
+        $sunday = strtotime("last Sunday 12:00am")-100;
+        $limit = isset($_GET["all"])?"":" LIMIT 2";
+        $duties_query = "(SELECT id,start AS time,checker,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS dutyname FROM houseduties r WHERE user={$this->User->user_id} AND checker <= 0 AND start > FROM_UNIXTIME({$sunday}) ORDER BY start ASC,dutyname ASC) UNION (SELECT id,start AS time,checker,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS dutyname FROM houseduties r WHERE user={$this->User->user_id} AND start > FROM_UNIXTIME({$sunday}) AND checker > 0 ORDER BY start DESC,dutyname ASC{$limit});";
+        $duties = $mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
+        return $duties;
     }
 
     private function punts() {
