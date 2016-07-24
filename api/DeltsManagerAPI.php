@@ -148,8 +148,16 @@ class DeltsManagerAPI extends APIFramework
         return $duties;
     }
 
+    /**
+     * Method for /account/punts
+     *
+     * @return mixed|array Array of punts
+     */
     private function punts() {
+        $punts_query = "SELECT timestamp,comment,makeup_given_by,IF(p.given_by>0,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.given_by),'Delts Manager') AS givenname FROM punts p WHERE user={$this->User->user_id} ORDER BY timestamp DESC";
+        $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
+        return $punts;
     }
 
     private function post_checkoff() {
