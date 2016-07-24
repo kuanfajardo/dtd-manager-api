@@ -87,4 +87,5 @@ class DeltsManagerAPI extends APIFramework
 
         // Assign local to global
         $this->User = $User;
-    }}
+    }
+}
