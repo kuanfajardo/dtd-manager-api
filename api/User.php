@@ -43,7 +43,7 @@ class User
      * @return bool token is valid
      */
     public function verify_token($token) {
-        
+
     }
 
     /**
