@@ -117,8 +117,20 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
+    /**
+     * Method for /account
+     *
+     * @return array Account info [id (int), name (string), email (string), privileges (array of strings)]
+     */
     private function account_info() {
+        $arr = array(
+            "id" => $this->User->user_id,
+            "name" => $this->User->user_name,
+            "email" => $this->User->user_email,
+            "privileges" => $this->User->user_privileges
+        );
 
+        return $arr;
     }
 
     private function duties() {
