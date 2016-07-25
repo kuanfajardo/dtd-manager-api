@@ -135,7 +135,7 @@ class DeltsManagerAPI extends APIFramework
     }
 
     /**
-     * Method for /account/duties
+     * Method for /account/duties [GET]
      *
      * @return mixed|array Array of house duties
      */
@@ -150,7 +150,7 @@ class DeltsManagerAPI extends APIFramework
     }
 
     /**
-     * Method for /account/punts
+     * Method for /account/punts [GET]
      *
      * @return mixed|array Array of punts
      */
@@ -163,7 +163,7 @@ class DeltsManagerAPI extends APIFramework
 
 
     /**
-     * Method for /account/checkoff
+     * Method for /account/checkoff [POST]
      * @return int
      * @throws Exception
      */
