@@ -81,6 +81,7 @@ class DeltsManagerAPI extends APIFramework
             $User->user_email = $res_email;
             $res = $mysqli->query("SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM);
             foreach($res as $r) {
+                // TODO: idk what this syntax is
                 $User->user_privileges[] = $r[0];
             }
         }
@@ -160,8 +161,30 @@ class DeltsManagerAPI extends APIFramework
         return $punts;
     }
 
-    private function post_checkoff() {
 
+    /**
+     * Method for /account/checkoff
+     * @return int
+     * @throws Exception
+     */
+    private function post_checkoff() {
+        $json_data = json_decode($this->file);
+
+        if(array_key_exists("duty_id", $json_data)) {
+            $duty_id = $mysqli->real_escape_string($json_data["duty_id"]);
+        } else {
+            throw new Exception("Duty ID not found");
+        }
+        $res = $mysqli->prepare("UPDATE houseduties SET checker=-1,checktime=CURRENT_TIMESTAMP WHERE id=? AND checker=0 AND user=?");
+        $res->bind_param("ii",$duty_id, $this->User->user_id);
+        $res->execute();
+
+        // TODO: implement status codes
+        if($res->affected_rows > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     private function settings() {
