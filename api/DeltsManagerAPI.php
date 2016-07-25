@@ -186,15 +186,4 @@ class DeltsManagerAPI extends APIFramework
             return 0;
         }
     }
-
-    private function settings() {
-
-    }
-
-    private function post_setting() {
-
-    }
-
-
-
 }
