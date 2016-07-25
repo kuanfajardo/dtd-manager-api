@@ -9,6 +9,7 @@
 // TODO: make sure this is correct path
 require_once ('../public/includes/db.php');
 require_once ('../public/includes/functions.php');
+require_once ('../public/includes/constants.php');
 
 // Requests from the same server don't have a HTTP_ORIGIN header
 if(!array_key_exists('HTTP_ORIGIN', $_SERVER)) {
