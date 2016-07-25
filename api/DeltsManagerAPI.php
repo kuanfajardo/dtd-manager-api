@@ -109,10 +109,6 @@ class DeltsManagerAPI extends APIFramework
                 return $this->punts();
             case 'checkoff':
                 return $this->post_checkoff();
-            case 'settings':
-                return $this->settings();
-            case 'setting':
-                return $this->post_setting();
             default:
                 throw new Exception('Verb Not Found');
         }
