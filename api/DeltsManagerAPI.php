@@ -16,7 +16,7 @@ class DeltsManagerAPI extends APIFramework
      */
     protected $User;
 
-    // TODO: delete in favor of one provided in db.php
+    // TODO: delete in favor of one provided in db.php (and change references)
     /**
      * @var mysqli
      */
@@ -27,7 +27,6 @@ class DeltsManagerAPI extends APIFramework
      * @var int success code
      */
     protected $success;
-
 
 
     /**
@@ -60,7 +59,7 @@ class DeltsManagerAPI extends APIFramework
         $User = new Models\User();
         if (!$User->verify_token($this->request['token'])) {
             $email = $User->email_from_token($this->request['token']);
-            $stmt = $mysqli->prepare("(SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?)");
+            $stmt = $this->mysqli->prepare("(SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?)");
             $stmt->bind_param("s", $email);
             $stmt->bind_result($res_id, $res_email, $res_first_name, $res_full_name);
         } else {
@@ -74,7 +73,7 @@ class DeltsManagerAPI extends APIFramework
             $stmt.free_result();
 
             // Add to 'logins'
-            $stmt2 = $mysqli->prepare("INSERT INTO logins(user,success) VALUES(?,?)");
+            $stmt2 = $this->mysqli->prepare("INSERT INTO logins(user,success) VALUES(?,?)");
             $stmt2->bind_param("ii",$res_id,$success);
             $stmt2->execute();
 
@@ -83,7 +82,7 @@ class DeltsManagerAPI extends APIFramework
             $User->user_first_name = $res_first_name;
             $User->user_full_name = $res_full_name;
             $User->user_email = $res_email;
-            $res = $mysqli->query("SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM);
+            $res = $this->mysqli->query("SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM);
             foreach($res as $r) {
                 // TODO: idk what this syntax is
                 $User->user_privileges[] = $r[0];
@@ -146,13 +145,13 @@ class DeltsManagerAPI extends APIFramework
         $sunday = strtotime("last Sunday 12:00am")-100;
         $limit = isset($_GET["all"])?"":" LIMIT 2";
         $duties_query = "(SELECT id,start AS time,checker,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS dutyname FROM houseduties r WHERE user={$this->User->user_id} AND checker <= 0 AND start > FROM_UNIXTIME({$sunday}) ORDER BY start ASC,dutyname ASC) UNION (SELECT id,start AS time,checker,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS dutyname FROM houseduties r WHERE user={$this->User->user_id} AND start > FROM_UNIXTIME({$sunday}) AND checker > 0 ORDER BY start DESC,dutyname ASC{$limit});";
-        $duties = $mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
+        $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
         return $duties;
         */
 
         $duties_query = "((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <=0) ORDER BY start ASC, dutyname ASC) UNION ((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0) ORDER BY start ASC, dutyname ASC)";
-        $duties = $mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
+        $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
         return $duties;
     }
@@ -165,13 +164,13 @@ class DeltsManagerAPI extends APIFramework
     private function account_punts() {
         /*
         $punts_query = "(SELECT timestamp,comment,makeup_given_by,IF(p.given_by>0,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.given_by),'Delts Manager') AS givenname FROM punts p WHERE user={$this->User->user_id} ORDER BY timestamp DESC)";
-        $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
+        $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
         return $punts;
         */
 
         $punts_query = "SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp, makeup_timestamp, makeup_given_by, makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC";
-        $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
+        $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
         return $punts;
     }
@@ -186,13 +185,13 @@ class DeltsManagerAPI extends APIFramework
         $json_data = json_decode($this->file);
 
         if(array_key_exists("DutyID", $json_data)) {
-            $duty_id = $mysqli->real_escape_string($json_data["DutyID"]);
+            $duty_id = $this->mysqli->real_escape_string($json_data["DutyID"]);
         } else {
             throw new Exception("Duty ID not found");
         }
 
         // checker = -1 is requested checkoff, checker = 0 is no checkoff, any other is user id of checker
-        $res = $mysqli->prepare("UPDATE houseduties SET checker=-1,checktime=CURRENT_TIMESTAMP WHERE id=? AND checker=0 AND user=?");
+        $res = $this->mysqli->prepare("UPDATE houseduties SET checker=-1,checktime=CURRENT_TIMESTAMP WHERE id=? AND checker=0 AND user=?");
         $res->bind_param("ii",$duty_id, $this->User->user_id);
         $res->execute();
 
@@ -218,7 +217,7 @@ class DeltsManagerAPI extends APIFramework
                 throw new Exception("Verb Not Found");
         }
 
-        //$houseduties = $mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
+        //$houseduties = $this->mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
 
         /*$dutynames = [];
         foreach($houseduties as $h) {
@@ -226,7 +225,7 @@ class DeltsManagerAPI extends APIFramework
         }
         */
 
-        $houseduties = $mysqli->query("SELECT title FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
+        $houseduties = $this->mysqli->query("SELECT title FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
 
         return $houseduties;
     }
@@ -263,7 +262,7 @@ class DeltsManagerAPI extends APIFramework
     private function manager_punts() {
         if (user_authorized([USER_HOUSE_MANAGER, USER_HONOR_BOARD])) {
             $punts_query = "SELECT id,timestamp,comment,makeup_given_by,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.user) AS givenname FROM punts p ORDER BY timestamp DESC";
-            $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
+            $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
             return $punts;
         } else {
@@ -275,7 +274,7 @@ class DeltsManagerAPI extends APIFramework
     // req checkoffs (duties -> checkoff)
     private function requested_checkoffs() {
         if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER])) {
-            $checkoffs = $mysqli->query("SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user) AS name,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS duty,start FROM houseduties r WHERE checker=-1;");
+            $checkoffs = $this->mysqli->query("SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user) AS name,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS duty,start FROM houseduties r WHERE checker=-1;");
             $checkoffs = $checkoffs->fetch_all(MYSQLI_ASSOC);
 
             return $checkoffs;
@@ -291,7 +290,7 @@ class DeltsManagerAPI extends APIFramework
         $duty_id = 1; // TODO: implement for real (Send from app)
         $user = "Yeet"; // TODO: implement for real (send from app)
 
-        $stmt = $mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
+        $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
         $stmt->bind_param("sii",$comments,$user,$duty_id);
         $stmt->execute();
 
@@ -299,8 +298,8 @@ class DeltsManagerAPI extends APIFramework
             return 0;
         }
 
-        $stmt = $mysqli->prepare("SELECT email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
-        $stmt->bind_param("i",$duty_id]);
+        $stmt = $this->mysqli->prepare("SELECT email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
+        $stmt->bind_param("i",$duty_id);
         $stmt->bind_result($user_email);
         $stmt->execute();
         $stmt->fetch();
@@ -326,7 +325,7 @@ class DeltsManagerAPI extends APIFramework
         $user_to_be_punted = 0; // TODO: implement for real (Send from app)
         $comment = ""; // TODO: implement for real (Send from app)
 
-        $stmt = $mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
+        $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
         $stmt->bind_param("iis",$user_to_be_punted, $user, $comment);
 
         if($stmt->execute()) {
