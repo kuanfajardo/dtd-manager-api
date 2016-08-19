@@ -169,7 +169,7 @@ class DeltsManagerAPI extends APIFramework
         return $punts;
         */
 
-        $punts_query = "SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp, makeup_timestamp, makeup_given_by, makeup_comment FROM punts WHERE user = {$this->User->user_id} ORDER BY timestamp DESC";
+        $punts_query = "SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp, makeup_timestamp, makeup_given_by, makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC";
         $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
         return $punts;
