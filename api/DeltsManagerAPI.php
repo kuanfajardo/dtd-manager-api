@@ -38,6 +38,13 @@ class DeltsManagerAPI extends APIFramework
     public function __construct($request, $origin) {
         parent::__construct($request);
 
+        // TODO: delete when function
+        define("USER_USER", 0);
+        define("USER_CHECKER", 1);
+        define("USER_HOUSE_MANAGER", 2);
+        define("USER_HONOR_BOARD", 3);
+        define("USER_ADMIN", 4);
+
         // get API Key factory
         // TODO: figure out whether or not i need this
         $APIKeyFactory = \Models\APIKeyFactory::Instance();
@@ -68,9 +75,9 @@ class DeltsManagerAPI extends APIFramework
 
         // Execution of User Creation
         if(isset($stmt)) {
-            $stmt.execute();
-            $stmt.fetch();
-            $stmt.free_result();
+            $stmt->execute();
+            $stmt->fetch();
+            $stmt->free_result();
 
             // Add to 'logins'
             $stmt2 = $this->mysqli->prepare("INSERT INTO logins(user,success) VALUES(?,?)");
@@ -197,8 +204,8 @@ class DeltsManagerAPI extends APIFramework
 
         // TODO: Implement status codes
         if($res->affected_rows > 0) {
-            send_email($this->User->user_email,"Checkoff Requested","{$this->User->user_name},\r\n\r\nYou just requested a checkoff for a duty.\r\n\r\nCheers,\r\nDM");
-            send_email("dtd-checkers@mit.edu","Checkoff Requested","Checkers,\r\n\r\n{$this->User->user_name} just requested a checkoff. Visit http://".BASE_URL."/checker_dashboard.php to give them a checkoff.\r\n\r\nCheers,\r\nDM");
+            send_email($this->User->user_email,"Checkoff Requested","{$this->User->user_full_name},\r\n\r\nYou just requested a checkoff for a duty.\r\n\r\nCheers,\r\nDM");
+            send_email("dtd-checkers@mit.edu","Checkoff Requested","Checkers,\r\n\r\n{$this->User->user_full_name} just requested a checkoff. Visit http://".BASE_URL."/checker_dashboard.php to give them a checkoff.\r\n\r\nCheers,\r\nDM");
 
             return 1;
         } else {
@@ -251,7 +258,10 @@ class DeltsManagerAPI extends APIFramework
     // all duties (duties -> admin tab)
     private function manager_duties() {
         if(user_authorized([USER_HOUSE_MANAGER])) {
-            $duties_query = $this->mysqli->prepare("SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d");
+            $duties_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d";
+            $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
+
+            return $duties;
 
         } else {
             throw new Exception("User Not Authorized");
@@ -309,7 +319,7 @@ class DeltsManagerAPI extends APIFramework
             return 1;
         }
 
-        $checker_name = $this->User->user_name;
+        $checker_name = $this->User->user_first_name;
 
         $message = "{$user},\r\n\r\n{$checker_name} just checked off one of your duties.\r\n\r\nCheers,\r\n\tDM";
         $subject = "Checked Off";
