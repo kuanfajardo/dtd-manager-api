@@ -126,7 +126,8 @@ class DeltsManagerAPI extends APIFramework
     private function account_info() {
         $arr = array(
             "id" => $this->User->user_id,
-            "name" => $this->User->user_name,
+            "first name" => $this->User->user_first_name,
+            "full name" => $this->User->user_full_name,
             "email" => $this->User->user_email,
             "privileges" => $this->User->user_privileges
         );
