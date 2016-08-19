@@ -60,9 +60,9 @@ class DeltsManagerAPI extends APIFramework
         $User = new Models\User();
         if (!$User->verify_token($this->request['token'])) {
             $email = $User->email_from_token($this->request['token']);
-            $stmt = $mysqli->prepare("SELECT id,email,CONCAT(first,' ',last) AS name FROM users WHERE email=?");
+            $stmt = $mysqli->prepare("SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?");
             $stmt->bind_param("s", $email);
-            $stmt->bind_result($res_id, $res_email, $res_name);
+            $stmt->bind_result($res_id, $res_email, $res_first_name, $res_full_name);
         } else {
             throw new Exception('Invalid Token');
         }
@@ -79,8 +79,9 @@ class DeltsManagerAPI extends APIFramework
             $stmt2->execute();
 
             // Populate User
-            $User->user_id= = $res_id;
-            $User->user_name = $res_name;
+            $User->user_id = $res_id;
+            $User->user_first_name = $res_first_name;
+            $User->user_full_name = $res_full_name;
             $User->user_email = $res_email;
             $res = $mysqli->query("SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM);
             foreach($res as $r) {
