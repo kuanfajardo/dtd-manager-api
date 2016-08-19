@@ -12,9 +12,14 @@ namespace Models;
 class User
 {
     /**
-     * @var string Username
+     * @var string Full Name
      */
-    public $user_name;
+    public $user_full_name;
+
+    /**
+     * @var string First Name
+     */
+    public $user_first_name;
 
     /**
      * @var int User ID
