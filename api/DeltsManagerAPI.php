@@ -185,12 +185,13 @@ class DeltsManagerAPI extends APIFramework
     private function post_checkoff() {
         $json_data = json_decode($this->file);
 
-        if(array_key_exists("duty_id", $json_data)) {
-            $duty_id = $mysqli->real_escape_string($json_data["duty_id"]);
+        if(array_key_exists("DutyID", $json_data)) {
+            $duty_id = $mysqli->real_escape_string($json_data["DutyID"]);
         } else {
             throw new Exception("Duty ID not found");
         }
 
+        // checker = -1 is requested checkoff, checker = 0 is no checkoff, any other is user id of checker
         $res = $mysqli->prepare("UPDATE houseduties SET checker=-1,checktime=CURRENT_TIMESTAMP WHERE id=? AND checker=0 AND user=?");
         $res->bind_param("ii",$duty_id, $this->User->user_id);
         $res->execute();
