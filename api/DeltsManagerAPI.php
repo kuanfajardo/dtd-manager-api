@@ -29,6 +29,7 @@ class DeltsManagerAPI extends APIFramework
     protected $success;
 
 
+
     /**
      * DeltsManagerAPI constructor.
      * @param $request string URI request
@@ -48,12 +49,14 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("No API Key provided");
         } else if (!\Models\APIKeyFactory::verify_key($this->request['apiKey'], $origin)) {
             throw new Exception('Invalid API Key');
-        } else if (!array_key_exists('token', $this->request)) {
-            throw new Exception("No User Token Provided");
         }
 
 
         // Token Validation and User Creation
+        if (!array_key_exists('token', $this->request)) {
+            throw new Exception("No user token provided");
+        }
+
         $User = new Models\User();
         if (!$User->verify_token($this->request['token'])) {
             $email = $User->email_from_token($this->request['token']);
@@ -104,9 +107,9 @@ class DeltsManagerAPI extends APIFramework
             case '':
                 return $this->account_info();
             case 'duties':
-                return $this->duties();
+                return $this->account_duties();
             case 'punts':
-                return $this->punts();
+                return $this->account_punts();
             case 'checkoff':
                 return $this->post_checkoff();
             default:
@@ -135,7 +138,7 @@ class DeltsManagerAPI extends APIFramework
      *
      * @return mixed|array Array of house duties
      */
-    private function duties() {
+    private function account_duties() {
         // Taken from dashboard.php
         $sunday = strtotime("last Sunday 12:00am")-100;
         $limit = isset($_GET["all"])?"":" LIMIT 2";
@@ -150,7 +153,7 @@ class DeltsManagerAPI extends APIFramework
      *
      * @return mixed|array Array of punts
      */
-    private function punts() {
+    private function account_punts() {
         $punts_query = "SELECT timestamp,comment,makeup_given_by,IF(p.given_by>0,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.given_by),'Delts Manager') AS givenname FROM punts p WHERE user={$this->User->user_id} ORDER BY timestamp DESC";
         $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
@@ -171,15 +174,143 @@ class DeltsManagerAPI extends APIFramework
         } else {
             throw new Exception("Duty ID not found");
         }
+
         $res = $mysqli->prepare("UPDATE houseduties SET checker=-1,checktime=CURRENT_TIMESTAMP WHERE id=? AND checker=0 AND user=?");
         $res->bind_param("ii",$duty_id, $this->User->user_id);
         $res->execute();
 
-        // TODO: implement status codes
+        // TODO: Implement status codes
         if($res->affected_rows > 0) {
+            send_email($this->User->user_email,"Checkoff Requested","{$this->User->user_name},\r\n\r\nYou just requested a checkoff for a duty.\r\n\r\nCheers,\r\nDM");
+            send_email("dtd-checkers@mit.edu","Checkoff Requested","Checkers,\r\n\r\n{$this->User->user_name} just requested a checkoff. Visit http://".BASE_URL."/checker_dashboard.php to give them a checkoff.\r\n\r\nCheers,\r\nDM");
+
             return 1;
         } else {
+
             return 0;
+        }
+    }
+
+
+    // SCHEDULING FUNCTIONS
+    protected function house_duty_names() {
+        switch ($this->verb) {
+            case '':
+                break;
+            default:
+                throw new Exception("Verb Not Found");
+        }
+
+        $temp = $mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
+        $dutynames = [];
+        foreach($temp as $t) {
+            $dutynames[$t["id"]] = $t;
+        }
+
+        return $dutynames;
+    }
+
+    // MANAGER FUNCTIONS
+    protected function manager() {
+        switch ($this->verb) {
+            case 'duties':
+                return $this->manager_duties();
+            case 'punts':
+                return $this->manager_punts();
+            case 'duty_checkoffs':
+                return $this->requested_checkoffs();
+            case 'checkoff_duty':
+                return $this->checkoff_duty();
+            case 'punt':
+                return $this->punt();
+            default:
+                throw new Exception("Verb Not Found");
+        }
+    }
+
+    // all duties (duties -> admin tab)
+    private function manager_duties() {
+        if(user_authorized([USER_HOUSE_MANAGER])) {
+            //
+        } else {
+            throw new Exception("User Not Authorized");
+        }
+    }
+
+    // all punts (punts -> admin tab)
+    private function manager_punts() {
+        if (user_authorized([USER_HOUSE_MANAGER, USER_HONOR_BOARD])) {
+            $punts_query = "SELECT id,timestamp,comment,makeup_given_by,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.user) AS givenname FROM punts p ORDER BY timestamp DESC";
+            $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
+
+            return $punts;
+        } else {
+            throw new Exception("User Not Authorized");
+        }
+
+    }
+
+    // req checkoffs (duties -> checkoff)
+    private function requested_checkoffs() {
+        if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER])) {
+            $checkoffs = $mysqli->query("SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user) AS name,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS duty,start FROM houseduties r WHERE checker=-1;");
+            $checkoffs = $checkoffs->fetch_all(MYSQLI_ASSOC);
+
+            return $checkoffs;
+        } else {
+            throw new Exception("User Not Authorized");
+        }
+    }
+
+    // checker grant checkoff
+    private function checkoff_duty() {
+        $checker = $this->User->user_id; // TODO: implement for real (send from app)
+        $comments = "None"; // TODO: implement for real (send from app)
+        $duty_id = 1; // TODO: implement for real (Send from app)
+        $user = "Yeet"; // TODO: implement for real (send from app)
+
+        $stmt = $mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
+        $stmt->bind_param("sii",$comments,$user,$duty_id);
+        $stmt->execute();
+
+        if ($stmt->affected_rows <= 0) {
+            return 0;
+        }
+
+        $stmt = $mysqli->prepare("SELECT email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
+        $stmt->bind_param("i",$duty_id]);
+        $stmt->bind_result($user_email);
+        $stmt->execute();
+        $stmt->fetch();
+        $stmt->free_result();
+
+        if (!($stmt->affected_rows > 0)) {
+            return 1;
+        }
+
+        $checker_name = $this->User->user_name;
+
+        $message = "{$user},\r\n\r\n{$checker_name} just checked off one of your duties.\r\n\r\nCheers,\r\n\tDM";
+        $subject = "Checked Off";
+
+        send_email($user_email,$subject,$message);
+
+        return 2;
+    }
+
+    // give new punt (Punt -> plus)
+    private function punt() {
+        $user = $this->User->user_id;
+        $user_to_be_punted = 0; // TODO: implement for real (Send from app)
+        $comment = ""; // TODO: implement for real (Send from app)
+
+        $stmt = $mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
+        $stmt->bind_param("iis",$user_to_be_punted, $user, $comment);
+
+        if($stmt->execute()) {
+            return 1;
+        } else {
+            return 0; // DB error
         }
     }
 }
