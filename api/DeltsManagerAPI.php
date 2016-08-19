@@ -60,7 +60,7 @@ class DeltsManagerAPI extends APIFramework
         $User = new Models\User();
         if (!$User->verify_token($this->request['token'])) {
             $email = $User->email_from_token($this->request['token']);
-            $stmt = $mysqli->prepare("SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?");
+            $stmt = $mysqli->prepare("(SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?)");
             $stmt->bind_param("s", $email);
             $stmt->bind_result($res_id, $res_email, $res_first_name, $res_full_name);
         } else {
@@ -155,7 +155,7 @@ class DeltsManagerAPI extends APIFramework
      * @return mixed|array Array of punts
      */
     private function account_punts() {
-        $punts_query = "SELECT timestamp,comment,makeup_given_by,IF(p.given_by>0,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.given_by),'Delts Manager') AS givenname FROM punts p WHERE user={$this->User->user_id} ORDER BY timestamp DESC";
+        $punts_query = "(SELECT timestamp,comment,makeup_given_by,IF(p.given_by>0,(SELECT CONCAT(first,' ',last) FROM users WHERE id=p.given_by),'Delts Manager') AS givenname FROM punts p WHERE user={$this->User->user_id} ORDER BY timestamp DESC)";
         $punts = $mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
         return $punts;
