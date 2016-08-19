@@ -154,7 +154,7 @@ class DeltsManagerAPI extends APIFramework
         $duties_query = "((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <=0) ORDER BY start ASC, dutyname ASC) UNION ((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0) ORDER BY start ASC, dutyname ASC)";
         $duties = $mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
-        return $duties
+        return $duties;
     }
 
     /**
@@ -225,7 +225,7 @@ class DeltsManagerAPI extends APIFramework
             $dutynames[$h["id"]] = $h;
         }
         */
-        
+
         $houseduties = $mysqli->query("SELECT title FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
 
         return $houseduties;
