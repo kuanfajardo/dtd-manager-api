@@ -1,6 +1,507 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - dtd_schema@localhost" uuid="cc0edb36-4140-4468-b89a-3bd9dc9d68f9">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  <data-source name="MySQL - jdbc:mysql://127.0.0.1:3306/dtd+dtd_site" uuid="cc0edb36-4140-4468-b89a-3bd9dc9d68f9">
+    <database-info product="MySQL" version="5.7.14" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="dtd+dtd_site">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="dtd"/>
+      <schema id="3" name="information_schema"/>
+      <schema id="4" name="mysql"/>
+      <schema id="5" name="performance_schema"/>
+      <schema id="6" name="sys"/>
+      <table id="7" parent="1" name="emails"/>
+      <table id="8" parent="1" name="guests"/>
+      <table id="9" parent="1" name="houseduties"/>
+      <table id="10" parent="1" name="housedutiesdefaults"/>
+      <table id="11" parent="1" name="housedutieslkp"/>
+      <table id="12" parent="1" name="invites"/>
+      <table id="13" parent="1" name="logins"/>
+      <table id="14" parent="1" name="parties"/>
+      <table id="15" parent="1" name="partyduties"/>
+      <table id="16" parent="1" name="partydutiesdefaults"/>
+      <table id="17" parent="1" name="partydutieslkp"/>
+      <table id="18" parent="1" name="punts"/>
+      <table id="19" parent="1" name="roles"/>
+      <table id="20" parent="1" name="roleslkp"/>
+      <table id="21" parent="1" name="roomslkp"/>
+      <table id="22" parent="1" name="users"/>
+      <column id="23" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="24" parent="7" name="recipient">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="25" parent="7" name="subject">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="26" parent="7" name="message">
+        <mandatory>1</mandatory>
+        <data-type>varchar(4097)|0</data-type>
+      </column>
+      <column id="27" parent="7" name="headers">
+        <mandatory>1</mandatory>
+        <data-type>varchar(1023)|0</data-type>
+      </column>
+      <column id="28" parent="7" name="timestamp">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="29" parent="7" name="success">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+        <default-expression>&apos;-1&apos;</default-expression>
+      </column>
+      <key id="30" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="31" parent="8" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="32" parent="8" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="33" parent="8" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(256)|0</data-type>
+      </column>
+      <column id="34" parent="8" name="comment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)|0</data-type>
+      </column>
+      <key id="35" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="36" parent="9" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="37" parent="9" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="38" parent="9" name="add_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="39" parent="9" name="duty">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+      </column>
+      <column id="40" parent="9" name="start">
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="41" parent="9" name="checker">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="42" parent="9" name="checktime">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="43" parent="9" name="checkcomments">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <key id="44" parent="9" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="45" parent="10" name="id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="46" parent="10" name="duty">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+      </column>
+      <column id="47" parent="10" name="day">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="48" parent="10" name="preset">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <key id="49" parent="10" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="50" parent="11" name="id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="51" parent="11" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(256)|0</data-type>
+      </column>
+      <column id="52" parent="11" name="description">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)|0</data-type>
+      </column>
+      <key id="53" parent="11" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="54" parent="12" name="guest">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+      </column>
+      <column id="55" parent="12" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="56" parent="12" name="party">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+      </column>
+      <column id="57" parent="12" name="add_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="58" parent="12" name="signin_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <key id="59" parent="12" name="PRIMARY">
+        <columns>guest
+party
+user</columns>
+        <primary>1</primary>
+      </key>
+      <column id="60" parent="13" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="61" parent="13" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="62" parent="13" name="success">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="63" parent="13" name="timestamp">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="64" parent="13" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="65" parent="14" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="66" parent="14" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(256)|0</data-type>
+      </column>
+      <column id="67" parent="14" name="description">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)|0</data-type>
+      </column>
+      <column id="68" parent="14" name="start">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="69" parent="14" name="end">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="70" parent="14" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="71" parent="15" name="id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="72" parent="15" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="73" parent="15" name="time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="74" parent="15" name="duty">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+      </column>
+      <column id="75" parent="15" name="start">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="76" parent="15" name="end">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="77" parent="15" name="bouncer">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="78" parent="15" name="bouncetime">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="79" parent="15" name="bouncecomments">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <key id="80" parent="15" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="81" parent="16" name="id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="82" parent="16" name="duty">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+      </column>
+      <column id="83" parent="16" name="start">
+        <mandatory>1</mandatory>
+        <data-type>mediumint(8) unsigned|0</data-type>
+      </column>
+      <column id="84" parent="16" name="end">
+        <mandatory>1</mandatory>
+        <data-type>mediumint(8) unsigned|0</data-type>
+      </column>
+      <key id="85" parent="16" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="86" parent="17" name="id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="87" parent="17" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(256)|0</data-type>
+      </column>
+      <column id="88" parent="17" name="description">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2048)|0</data-type>
+      </column>
+      <key id="89" parent="17" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="90" parent="18" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="91" parent="18" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="92" parent="18" name="given_by">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="93" parent="18" name="comment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(4095)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="94" parent="18" name="timestamp">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="95" parent="18" name="makeup_timestamp">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <column id="96" parent="18" name="makeup_given_by">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="97" parent="18" name="makeup_comment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(4095)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <key id="98" parent="18" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="99" parent="19" name="user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="100" parent="19" name="role">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="101" parent="19" name="PRIMARY">
+        <columns>user
+role</columns>
+        <primary>1</primary>
+      </key>
+      <column id="102" parent="20" name="id">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="103" parent="20" name="constant">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="104" parent="20" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="105" parent="20" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="106" parent="21" name="id">
+        <mandatory>1</mandatory>
+        <data-type>char(6)|0</data-type>
+      </column>
+      <column id="107" parent="21" name="desc_code">
+        <mandatory>1</mandatory>
+        <data-type>char(6)|0</data-type>
+      </column>
+      <column id="108" parent="21" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="109" parent="21" name="occupancy">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <key id="110" parent="21" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="111" parent="22" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="112" parent="22" name="first">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="113" parent="22" name="middle">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="114" parent="22" name="last">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="115" parent="22" name="nickname">
+        <mandatory>1</mandatory>
+        <data-type>varchar(60)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="116" parent="22" name="pledgeyear">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+      </column>
+      <column id="117" parent="22" name="gradyear">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned|0</data-type>
+      </column>
+      <column id="118" parent="22" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="119" parent="22" name="password">
+        <mandatory>1</mandatory>
+        <data-type>char(60)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="120" parent="22" name="room">
+        <mandatory>1</mandatory>
+        <data-type>smallint(6)|0</data-type>
+      </column>
+      <column id="121" parent="22" name="pledgenumber">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3) unsigned|0</data-type>
+      </column>
+      <column id="122" parent="22" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>char(10)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="123" parent="22" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="124" parent="22" name="course">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="125" parent="22" name="hometown">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="126" parent="22" name="interests">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="127" parent="22" name="aspirations">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="128" parent="22" name="duties">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+      </column>
+      <column id="129" parent="22" name="active">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="130" parent="22" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
   </data-source>
 </component>

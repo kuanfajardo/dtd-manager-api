@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - dtd_schema@localhost" uuid="cc0edb36-4140-4468-b89a-3bd9dc9d68f9">
+    <data-source name="MySQL - jdbc:mysql://127.0.0.1:3306/dtd+dtd_site" uuid="cc0edb36-4140-4468-b89a-3bd9dc9d68f9">
       <secret-storage>memory</secret-storage>
-      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+      <resolve-scope>dtd+dtd_site:*|sys:</resolve-scope>
     </data-source>
   </component>
 </project>
