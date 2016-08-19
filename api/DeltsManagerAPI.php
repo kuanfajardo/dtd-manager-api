@@ -252,7 +252,8 @@ class DeltsManagerAPI extends APIFramework
     // all duties (duties -> admin tab)
     private function manager_duties() {
         if(user_authorized([USER_HOUSE_MANAGER])) {
-            //
+            $duties_query = $this->mysqli->prepare("SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d");
+
         } else {
             throw new Exception("User Not Authorized");
         }
