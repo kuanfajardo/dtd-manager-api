@@ -218,13 +218,17 @@ class DeltsManagerAPI extends APIFramework
                 throw new Exception("Verb Not Found");
         }
 
-        $temp = $mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
-        $dutynames = [];
-        foreach($temp as $t) {
-            $dutynames[$t["id"]] = $t;
-        }
+        //$houseduties = $mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
 
-        return $dutynames;
+        /*$dutynames = [];
+        foreach($houseduties as $h) {
+            $dutynames[$h["id"]] = $h;
+        }
+        */
+        
+        $houseduties = $mysqli->query("SELECT title FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
+
+        return $houseduties;
     }
 
     // MANAGER FUNCTIONS
