@@ -279,7 +279,7 @@ class DeltsManagerAPI extends APIFramework
         switch ($json_data['Claim']) {
             case 'true':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=? WHERE id=? AND user=0 AND start >= '{$l}' AND start <= '{$h}' AND checker=0");
-                $stmt->bind_param("ii",$_SESSION["user_id"],$_POST["claim"]);
+                $stmt->bind_param("ii",$this->User->user_id, $json_data['HouseDutyID']);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
                     return 1;
@@ -288,7 +288,7 @@ class DeltsManagerAPI extends APIFramework
                 }
             case 'false':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=0 WHERE id=? AND user=?");
-                $stmt->bind_param("ii",$_POST["disclaim"],$_SESSION["user_id"]);
+                $stmt->bind_param("ii",$json_data['HouseDutyID'],$this->User->user_id);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
                     return 1;
