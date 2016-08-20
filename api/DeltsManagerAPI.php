@@ -167,7 +167,7 @@ class DeltsManagerAPI extends APIFramework
         */
 
         $duties_query = "((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <=0) ORDER BY start ASC, dutyname ASC) UNION ((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0) ORDER BY start ASC, dutyname ASC)";
-        $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
+        $duties = $this->mysqli->query($duties_query)->fetch_assoc();
 
         return $duties;
     }
@@ -186,7 +186,7 @@ class DeltsManagerAPI extends APIFramework
         */
 
         $punts_query = "SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp, makeup_timestamp, IF(makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'), makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC";
-        $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
+        $punts = $this->mysqli->query($punts_query)->fetch_assoc();
 
         return $punts;
     }
@@ -245,7 +245,7 @@ class DeltsManagerAPI extends APIFramework
         }
         */
 
-        $houseduties = $this->mysqli->query("SELECT title FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
+        $houseduties = $this->mysqli->query("SELECT title FROM housedutieslkp;")->fetch_assoc();
 
         return $houseduties;
     }
@@ -323,7 +323,7 @@ class DeltsManagerAPI extends APIFramework
     private function manager_duties() {
         if(user_authorized([USER_HOUSE_MANAGER])) {
             $duties_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d";
-            $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
+            $duties = $this->mysqli->query($duties_query)->fetch_assoc();
 
             return $duties;
 
@@ -336,7 +336,7 @@ class DeltsManagerAPI extends APIFramework
     private function manager_punts() {
         if (user_authorized([USER_HOUSE_MANAGER, USER_HONOR_BOARD])) {
             $punts_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = p.user), IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), timestamp, comment, IF(makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'), makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC";
-            $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
+            $punts = $this->mysqli->query($punts_query)->fetch_assoc();
 
             return $punts;
         } else {
@@ -349,7 +349,7 @@ class DeltsManagerAPI extends APIFramework
     private function requested_checkoffs() {
         if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER])) {
             $checkoffs_query = "SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user), (SELECT title FROM housedutieslkp WHERE id = r.duty), start FROM houseduties r WHERE checker=-1;";
-            $checkoffs = $this->mysqli->query($checkoffs_query)->fetch_all(MYSQLI_ASSOC);
+            $checkoffs = $this->mysqli->query($checkoffs_query)->fetch_assoc();
 
             return $checkoffs;
         } else {
