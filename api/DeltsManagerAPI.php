@@ -87,10 +87,12 @@ class DeltsManagerAPI extends APIFramework
                 $stmt->fetch();
                 $stmt->free_result();
 
+                /*
                 // Add to 'logins'
                 $stmt2 = $this->mysqli->prepare("INSERT INTO logins(user,success) VALUES(?,?)");
                 $stmt2->bind_param("ii", $res_id, $success);
                 $stmt2->execute();
+                */
 
                 // Populate User
                 $User->user_id = $res_id;
@@ -508,7 +510,7 @@ class DeltsManagerAPI extends APIFramework
 
     // AUTHENTICATE FUNCTIONS
     /**
-     * Method for /authenticate
+     * Method for /authenticate [POST]
      *
      * (A) Checks for digest auth keys in HTTP Body -> if not found, respond with necessary keys to client
      * (B) If found, (which means client either (1) has gone through step A or (2) has not, and is trying to hack), then
@@ -518,20 +520,55 @@ class DeltsManagerAPI extends APIFramework
      * @throws Exception AuthError
      */
     protected function authenticate() {
-        if (!array_key_exists('email', $this->request)) {
-            throw new Exception("No Email Provided");
+        $json_data = json_decode($this->file);
+        $digest_keys = ['username', 'realm', 'nonce', 'opaque', 'method', 'uri', 'response'];
+
+        $realm = md5('dtd');
+        $nonce = md5($this->unique_string(32));
+        $opaque = md5($this->unique_string(32));
+
+        foreach ($digest_keys as $key) {
+            if (!array_key_exists($key, $json_data)) {
+                return array(
+                    'realm' => $realm,
+                    'nonce' => $nonce,
+                    'opaque' => $opaque
+                );
+            }
         }
-        if (!array_key_exists('password', $this->request)) {
-            throw new Exception("No Password provided");
-        }
+
+        $username = $json_data['username'];
+        $response = $json_data['response'];
+        $method = $json_data['method'];
+        $uri = $json_data['uri'];
 
         $password_query = "SELECT password from users WHERE email = {$this->request['email']}";
-        $real_pass = $this->mysqli->query($password_query)->fetch_all(MYSQLI_ASSOC);
+        $password = $this->mysqli->query($password_query)->fetch_all(MYSQLI_ASSOC);
 
-        if(password_verify($this->request['password'], $real_pass)) {
-            return $this->account();
+
+        $a1 = md5("{$username}:{$realm}:{$password}");
+        $a2 = md5("{$method}:{$uri}");
+        $auth = md5("{$a1}:{$nonce}:{$a2}");
+
+        if ($response == $auth) {
+            return array(
+                'status' => 1
+            );
         } else {
-            throw new Exception("Invalid Password");
+            return array(
+                'status' => 0
+            );
         }
+    }
+
+    // HELPER FUNCTIONS
+    private function unique_string($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    {
+        $str = '';
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i) {
+            $str .= $keyspace[random_int(0, $max)];
+        }
+        return $str;
     }
 }
