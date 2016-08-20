@@ -284,8 +284,8 @@ class DeltsManagerAPI extends APIFramework
     // req checkoffs (duties -> checkoff)
     private function requested_checkoffs() {
         if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER])) {
-            $checkoffs = $this->mysqli->query("SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user) AS name,(SELECT title FROM housedutieslkp WHERE id=r.duty) AS duty,start FROM houseduties r WHERE checker=-1;");
-            $checkoffs = $checkoffs->fetch_all(MYSQLI_ASSOC);
+            $checkoffs_query = "SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user), (SELECT title FROM housedutieslkp WHERE id = r.duty), start FROM houseduties r WHERE checker=-1;";
+            $checkoffs = $this->mysqli->query($checkoffs_query)->fetch_all(MYSQLI_ASSOC);
 
             return $checkoffs;
         } else {
