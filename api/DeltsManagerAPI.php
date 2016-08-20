@@ -194,7 +194,7 @@ class DeltsManagerAPI extends APIFramework
 
     /**
      * Method for /account/checkoff [POST]
-     * @return int
+     * @return array
      * @throws Exception
      */
     private function post_checkoff() {
@@ -216,10 +216,14 @@ class DeltsManagerAPI extends APIFramework
             send_email($this->User->user_email,"Checkoff Requested","{$this->User->user_full_name},\r\n\r\nYou just requested a checkoff for a duty.\r\n\r\nCheers,\r\nDM");
             send_email("dtd-checkers@mit.edu","Checkoff Requested","Checkers,\r\n\r\n{$this->User->user_full_name} just requested a checkoff. Visit http://".BASE_URL."/checker_dashboard.php to give them a checkoff.\r\n\r\nCheers,\r\nDM");
 
-            return 1;
+            return array(
+                'status' => 1
+            );
         } else {
 
-            return 0;
+            return array(
+                'status' => 0
+            );
         }
     }
 
@@ -282,18 +286,22 @@ class DeltsManagerAPI extends APIFramework
                 $stmt->bind_param("ii",$this->User->user_id, $json_data['HouseDutyID']);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
-                    return 1;
+                    return array(
+                        'status' => 1
+                    );
                 } else {
-                    return 0;
+                    throw new Exception("Duty already taken");
                 }
             case 'false':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=0 WHERE id=? AND user=?");
                 $stmt->bind_param("ii",$json_data['HouseDutyID'],$this->User->user_id);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
-                    return 1;
+                    return array(
+                        'status' => 1
+                    );
                 } else {
-                    return 0;
+                    throw new Exception("Duty already taken");
                 }
             default:
                 throw new Exception("ONANA Your argument is invalid");
@@ -386,7 +394,7 @@ class DeltsManagerAPI extends APIFramework
         $stmt->execute();
 
         if ($stmt->affected_rows <= 0) {
-            return 0;
+            throw new Exception("DB error: failed to checkoff");
         }
 
         $stmt = $this->mysqli->prepare("SELECT email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
@@ -397,7 +405,10 @@ class DeltsManagerAPI extends APIFramework
         $stmt->free_result();
 
         if (!($stmt->affected_rows > 0)) {
-            return 1;
+            return array(
+                'status' => 1,
+                'description' => 'Email not sent'
+            );
         }
 
         $checker_name = $this->User->user_first_name;
@@ -407,7 +418,10 @@ class DeltsManagerAPI extends APIFramework
 
         send_email($user_email,$subject,$message);
 
-        return 2;
+        return array(
+            'status' => 2,
+            'description' => 'Email sent'
+        );
     }
 
     // give new punt (Punt -> plus)
@@ -433,9 +447,11 @@ class DeltsManagerAPI extends APIFramework
         $stmt->bind_param("iis",$user_to_be_punted, $user, $comments);
 
         if($stmt->execute()) {
-            return 1;
+            return array(
+                'status' => 1
+            );
         } else {
-            return 0; // DB error
+            throw new Exception("DB error");
         }
     }
 
