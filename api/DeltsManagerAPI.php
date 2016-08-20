@@ -275,7 +275,7 @@ class DeltsManagerAPI extends APIFramework
      */
     private function update_duty() {
         // parse input data
-        $json_data = $this->file;
+        $json_data = json_decode($this->file);
 
         if (!array_key_exists('HouseDutyID', $json_data)) {
             throw new Exception("No house id");
