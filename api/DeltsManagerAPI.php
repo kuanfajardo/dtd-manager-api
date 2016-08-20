@@ -295,10 +295,27 @@ class DeltsManagerAPI extends APIFramework
 
     // checker grant checkoff
     private function checkoff_duty() {
+        $json_data = json_decode($this->file);
+
+        if(array_key_exists("Comments", $json_data)) {
+            $comments = $this->mysqli->real_escape_string($json_data["Comments"]);
+        } else {
+            throw new Exception("Comments not found");
+        }
+
+        if(array_key_exists("DutyID", $json_data)) {
+            $duty_id = $this->mysqli->real_escape_string($json_data["DutyID"]);
+        } else {
+            throw new Exception("Duty ID not found");
+        }
+
+        if(array_key_exists("UserID", $json_data)) {
+            $user = $this->mysqli->real_escape_string($json_data["UserID"]);
+        } else {
+            throw new Exception("User ID not found");
+        }
+
         $checker = $this->User->user_id; // TODO: implement for real (send from app)
-        $comments = "None"; // TODO: implement for real (send from app)
-        $duty_id = 1; // TODO: implement for real (Send from app)
-        $user = "Yeet"; // TODO: implement for real (send from app)
 
         $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
         $stmt->bind_param("sii",$comments,$user,$duty_id);
