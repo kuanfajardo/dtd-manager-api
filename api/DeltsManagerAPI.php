@@ -115,8 +115,8 @@ class DeltsManagerAPI extends APIFramework
 
     /**
      * Endpoint function for /account. Redirects according to verb /account/<verb>
-     *
-     * @throws Exception Verb not Found
+     * @return array
+     * @throws Exception VerbNotFound
      */
     protected function account() {
         switch ($this->verb) {
@@ -134,7 +134,7 @@ class DeltsManagerAPI extends APIFramework
     }
 
     /**
-     * Method for /account
+     * Method for /account [GET]
      *
      * @return array Account info [id (int), name (string), email (string), privileges (array of strings)]
      */
@@ -153,7 +153,7 @@ class DeltsManagerAPI extends APIFramework
     /**
      * Method for /account/duties [GET]
      *
-     * @return mixed|array Array of house duties
+     * @return array Array of house duties
      */
     private function account_duties() {
         // Taken from dashboard.php
@@ -175,7 +175,7 @@ class DeltsManagerAPI extends APIFramework
     /**
      * Method for /account/punts [GET]
      *
-     * @return mixed|array Array of punts
+     * @return array Array of punts
      */
     private function account_punts() {
         /*
@@ -194,8 +194,9 @@ class DeltsManagerAPI extends APIFramework
 
     /**
      * Method for /account/checkoff [POST]
-     * @return array
-     * @throws Exception
+     *
+     * @return array Status array
+     * @throws Exception KeyError
      */
     private function post_checkoff() {
         $json_data = json_decode($this->file);
@@ -229,6 +230,13 @@ class DeltsManagerAPI extends APIFramework
 
 
     // SCHEDULING FUNCTIONS
+
+    /**
+     * Endpoint function for /schedulingRedirects according to verb /scheduling/<verb>
+     *
+     * @return array
+     * @throws Exception VerbNotFound
+     */
     protected function scheduling() {
         switch ($this->verb) {
             case 'house_duties':
@@ -240,6 +248,11 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
+    /**
+     * Method for /scheduling/house_duties [GET]
+     *
+     * @return array Array of house duties
+     */
     private function house_duty_names() {
         //$houseduties = $this->mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
 
@@ -254,6 +267,12 @@ class DeltsManagerAPI extends APIFramework
         return $houseduties;
     }
 
+    /**
+     * Method for /scheduling/update_duty [POST]
+     *
+     * @return array Status array
+     * @throws Exception KeyError, DBError, UIError
+     */
     private function update_duty() {
         // parse input data
         $json_data = $this->file;
@@ -301,7 +320,7 @@ class DeltsManagerAPI extends APIFramework
                         'status' => 1
                     );
                 } else {
-                    throw new Exception("Duty already taken");
+                    throw new Exception("You do not have this duty to disclaim");
                 }
             default:
                 throw new Exception("ONANA Your argument is invalid");
@@ -310,6 +329,13 @@ class DeltsManagerAPI extends APIFramework
 
 
     // MANAGER FUNCTIONS
+
+    /**
+     * Endpoint method for /manager. Redirects according to verb /manager/<verb>
+     *
+     * @return array
+     * @throws Exception VerbNotFound
+     */
     protected function manager() {
         switch ($this->verb) {
             case 'duties':
@@ -327,7 +353,12 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // all duties (duties -> admin tab)
+    /**
+     * Method for /manager/duties [GET]
+     *
+     * @return array Array of all duties (ever)
+     * @throws Exception UserNotAuthorized
+     */
     private function manager_duties() {
         if(user_authorized([USER_HOUSE_MANAGER])) {
             $duties_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d";
@@ -340,7 +371,12 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // all punts (punts -> admin tab)
+    /**
+     * Method for /manager/punts [GET]
+     *
+     * @return array Array of all punts (ever)
+     * @throws Exception UserNotAuthorized
+     */
     private function manager_punts() {
         if (user_authorized([USER_HOUSE_MANAGER, USER_HONOR_BOARD])) {
             $punts_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = p.user), IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), timestamp, comment, IF(makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'), makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC";
@@ -353,7 +389,12 @@ class DeltsManagerAPI extends APIFramework
 
     }
 
-    // req checkoffs (duties -> checkoff)
+    /**
+     * Method for /manager/duty_checkoffs [GET]
+     *
+     * @return array Array of all requested checkoffs
+     * @throws Exception UserNotAuthorized
+     */
     private function requested_checkoffs() {
         if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER])) {
             $checkoffs_query = "SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user), (SELECT title FROM housedutieslkp WHERE id = r.duty), start FROM houseduties r WHERE checker=-1;";
@@ -365,7 +406,12 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // checker grant checkoff
+    /**
+     * Method for /manager/checkoff_duty [POST]
+     *
+     * @return array Status array
+     * @throws Exception KeyError, DBError
+     */
     private function checkoff_duty() {
         $json_data = json_decode($this->file);
 
@@ -424,14 +470,19 @@ class DeltsManagerAPI extends APIFramework
         );
     }
 
-    // give new punt (Punt -> plus)
+    /**
+     * Method for /manager/punt [POST]
+     *
+     * @return array Status array
+     * @throws Exception KeyNotFound, DBError
+     */
     private function punt() {
         $json_data = json_decode($this->file);
 
         if(array_key_exists("PuntedID", $json_data)) {
             $user_to_be_punted = $this->mysqli->real_escape_string($json_data["PuntedID"]);
         } else {
-            throw new Exception("Comments not found");
+            throw new Exception("User to be punted not found");
         }
 
         if(array_key_exists("Comments", $json_data)) {
@@ -455,7 +506,17 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // AUTHENTICATE
+    // AUTHENTICATE FUNCTIONS
+    /**
+     * Method for /authenticate
+     *
+     * (A) Checks for digest auth keys in HTTP Body -> if not found, respond with necessary keys to client
+     * (B) If found, (which means client either (1) has gone through step A or (2) has not, and is trying to hack), then
+     *      compute server side login hashes and compare, then return success array accordingly
+     *
+     * @return array (A) Digest Auth keys array OR (B) Status array
+     * @throws Exception AuthError
+     */
     protected function authenticate() {
         if (!array_key_exists('email', $this->request)) {
             throw new Exception("No Email Provided");
