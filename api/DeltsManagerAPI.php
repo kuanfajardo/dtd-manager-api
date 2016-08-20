@@ -571,4 +571,27 @@ class DeltsManagerAPI extends APIFramework
         }
         return $str;
     }
+
+    private function api_status_description_from_code($code) {
+        switch ($code) {
+            case 0:
+                return 'General Error';
+            case 1:
+                return 'Success';
+            case 2:
+                return 'Success - Email Failure';
+            case 3:
+                return 'Authorization Error';
+            case 4:
+                return 'Database UPDATE Error';
+            case 5:
+                return 'Database GET Error';
+            case 6:
+                return 'Key Error';
+            case 7:
+                return 'URI error';
+            default:
+                return 'Unknown Error';
+        }
+    }
 }
