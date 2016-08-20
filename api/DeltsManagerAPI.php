@@ -348,12 +348,25 @@ class DeltsManagerAPI extends APIFramework
 
     // give new punt (Punt -> plus)
     private function punt() {
+        $json_data = json_decode($this->file);
+
+        if(array_key_exists("PuntedID", $json_data)) {
+            $user_to_be_punted = $this->mysqli->real_escape_string($json_data["PuntedID"]);
+        } else {
+            throw new Exception("Comments not found");
+        }
+
+        if(array_key_exists("Comments", $json_data)) {
+            $comments = $this->mysqli->real_escape_string($json_data["Comments"]);
+        } else {
+            throw new Exception("Comments not found");
+        }
+
         $user = $this->User->user_id;
-        $user_to_be_punted = 0; // TODO: implement for real (Send from app)
-        $comment = ""; // TODO: implement for real (Send from app)
+
 
         $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
-        $stmt->bind_param("iis",$user_to_be_punted, $user, $comment);
+        $stmt->bind_param("iis",$user_to_be_punted, $user, $comments);
 
         if($stmt->execute()) {
             return 1;
