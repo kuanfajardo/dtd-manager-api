@@ -225,14 +225,18 @@ class DeltsManagerAPI extends APIFramework
 
 
     // SCHEDULING FUNCTIONS
-    protected function house_duty_names() {
+    protected function scheduling() {
         switch ($this->verb) {
-            case '':
-                break;
+            case 'house_duties':
+                return $this->house_duty_names();
+            case 'update_duty':
+                return $this->update_duty();
             default:
                 throw new Exception("Verb Not Found");
         }
+    }
 
+    private function house_duty_names() {
         //$houseduties = $this->mysqli->query("SELECT id,title,description FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
 
         /*$dutynames = [];
@@ -245,6 +249,57 @@ class DeltsManagerAPI extends APIFramework
 
         return $houseduties;
     }
+
+    private function update_duty() {
+        // parse input data
+        $json_data = $this->file;
+
+        if (!array_key_exists('HouseDutyID', $json_data)) {
+            throw new Exception("No house id");
+        }
+
+        if (!array_key_exists('Claim', $json_data)) {
+            throw new Exception("No claim data provided");
+        }
+
+        // Check for duty window
+        $weekstart = strtotime(isset($_GET["week"])?$_GET["week"]:"Sunday 12:00:00am");
+        $weekstart -= date('N',$weekstart)*24*60*60;
+        $weekfinish = $weekstart + 7*24*60*60-1;
+
+        $l = date('Y-m-d',$weekstart);
+        $h = date('Y-m-d',$weekfinish);
+
+        $modify = time()<$weekfinish || (time() < $weekstart+12*60*60 && time() > $weekstart-36*60*60);
+
+        if (!$modify) {
+            throw new Exception("Schedule not open");
+        }
+
+        switch ($json_data['Claim']) {
+            case 'true':
+                $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=? WHERE id=? AND user=0 AND start >= '{$l}' AND start <= '{$h}' AND checker=0");
+                $stmt->bind_param("ii",$_SESSION["user_id"],$_POST["claim"]);
+                $stmt->execute();
+                if($stmt->affected_rows > 0) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            case 'false':
+                $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=0 WHERE id=? AND user=?");
+                $stmt->bind_param("ii",$_POST["disclaim"],$_SESSION["user_id"]);
+                $stmt->execute();
+                if($stmt->affected_rows > 0) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            default:
+                throw new Exception("ONANA Your argument is invalid");
+        }
+    }
+
 
     // MANAGER FUNCTIONS
     protected function manager() {
