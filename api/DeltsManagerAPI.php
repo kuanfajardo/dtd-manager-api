@@ -76,7 +76,7 @@ class DeltsManagerAPI extends APIFramework
             }
 
             // Email Validation and User Population
-            if (!array_key_exists('email', $this->request)) {
+            if (!array_key_exists('email', $json_data)) {
                 throw new Exception("No Email provided");
             }
 

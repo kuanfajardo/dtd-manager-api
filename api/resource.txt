@@ -1,41 +1,30 @@
-ACCOUNT METHODS
-(1) account/
+                                            ///////////////////////
+                                            //// RETURN VALUES ////
+                                            ///////////////////////
 
-"SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?"
+                                            -----------------------
+                                            |  ACCOUNT FUNCTIONS  |
+                                            -----------------------
+
+(1) account/
 
 "user_id" : INT(11) :: Int
 "first_name" : VARCHAR(40) :: String
 "full_name" : VARCHAR(?) bc CONCAT :: String
 "email" : VARCHAR(100) :: String
-
-SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM)
-foreach ($res as $r) {
-    $User->user_privileges[] = $r[0];
-}
-
 "privileges" : 0 => _ , 1 => _ , ... (ARRAY) :: Array
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 //TODO: add duty description
 (2) account/duties
-
-"SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM
-houseduties r WHERE user = {$this->User->user_id} AND checker <= 0 UNION SELECT id AS duty_id, start AS date,
-(SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id}
-AND checker > 0 ORDER BY date ASC, duty_name ASC)";
 
 "duty_id" : INT(10) :: Int
 "date" : DATE :: String in "YYYY-MM-DD" format
 "duty_name" : VARCHAR(256) :: String
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 
 (3) account/punts
-
-"SELECT id AS punt_id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager') AS given_by,
-comment, timestamp, makeup_timestamp, IF(p.makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by),
-'Delts Manager') AS makeup_given_by, makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp
-DESC";
 
 "punt_id" : INT(11) :: Int
 "given_by" : VARCHAR(40) or 'Delts Manager' :: String
@@ -45,7 +34,7 @@ DESC";
 "makeup_given_by" : VARCHAR(40) or '---' :: String
 "makeup_comment" : VARCHAR(4095) :: String
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 // TODO: for post functions, resource key names
 // TODO: for all functions resource key names
 (4) account/post_checkoff
@@ -58,33 +47,32 @@ ELSE ::
 
 ________________________________________________________________________________________________________________________
 
+                                            --------------------------
+                                            |  SCHEDULING FUNCTIONS  |
+                                            --------------------------
 
-SCHEDULING METHODS
+
 (1) scheduling/house_duties
-
-"SELECT title AS duty_title FROM housedutieslkp";
 
 "duty_title" : VARCHAR(256) :: String
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 
 (2) scheduling/update_duty
 
 SUCCESS ::
- "status" : 1 :: Int
+"status" : 1 :: Int
 
- ELSE ::
- "error" : "{Error Message}" :: String
+ELSE ::
+"error" : "{Error Message}" :: String
 
 ________________________________________________________________________________________________________________________
 
+                                            -----------------------
+                                            |  MANAGER FUNCTIONS  |
+                                            -----------------------
 
-MANAGER FUNCTIONS
 (1) manager/duties
-
-"SELECT id AS duty_id, (SELECT CONCAT(first, ' ', last) AS duty_user_name FROM users WHERE id = d.user), (SELECT title
-AS duty_name FROM housedutieslkp WHERE id = d.duty), start AS date, (SELECT CONCAT(first, ' ', last) AS checker FROM
-users WHERE id = d.checker), checktime AS check_time, checkcomments AS check_comments FROM houseduties d";
 
 "duty_id" : INT(11) :: Int
 "duty_user_name" : VARCHAR(?) bc CONCAT :: String
@@ -94,15 +82,9 @@ users WHERE id = d.checker), checktime AS check_time, checkcomments AS check_com
 "check_time" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
 "check_comments" : VARCHAR(2048) :: String
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 
 (2) manager/punts
-
-"SELECT id AS punt_id, (SELECT CONCAT(first, ' ', last) AS punted_user_name FROM users WHERE id = p.user),
-IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager') AS given_by, timestamp, comment,
-IF(makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), '---') AS makeup_given_by,
-makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC";
-
 
 "duty_id" : INT(11) :: Int
 "punted_user_name" : VARCHAR(?) bc CONCAT :: String
@@ -113,43 +95,41 @@ makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC";
 "makeup_timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
 "makeup_comment" : VARCHAR(4095) :: String
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 
 (3) manager/duty_checkoffs
-
-"SELECT id as duty_id,(SELECT CONCAT(first,' ',last) AS duty_user_name FROM users WHERE id=r.user), (SELECT title AS
-duty_name FROM housedutieslkp WHERE id = r.duty), start AS date FROM houseduties r WHERE checker=-1;";
 
 "duty_id" : INT(10) :: Int
 "duty_user_name" : VARCHAR(?) bc CONCAT :: String
 "duty_name" : VARCHAR(256) :: String
 "date" : DATE :: String in "YYYY-MM-DD" format
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 
 (4) manager/checkoff_duty
 
 SUCCESS ::
- "status" : {code} :: Int
- "description" : {desc} :: String
+"status" : {code} :: Int
+"description" : {desc} :: String
 
- ELSE ::
- "error" : "{Error Message}" :: String
+ELSE ::
+"error" : "{Error Message}" :: String
 
-________________________________________________________________________________________________________________________
+_________________________________________________________
 
 (5) manager/punt
 
 SUCCESS ::
- "status" : 1 :: Int
+"status" : 1 :: Int
 
- ELSE ::
- "error" : "{Error Message}" :: String
+ELSE ::
+"error" : "{Error Message}" :: String
 
 ________________________________________________________________________________________________________________________
 
-
-AUTHENTICATION METHOD
+                                            -----------------------------
+                                            |  AUTHENTICATION FUNCTION  |
+                                            -----------------------------
 
 (1) authenticate/
 
@@ -163,7 +143,27 @@ PART B ::
 
 ________________________________________________________________________________________________________________________
 
-FOR ALL
+                                                -----------------
+                                                | ALL FUNCTIONS |
+                                                -----------------
 
 ERROR ::
 "error" : "{Error Message}" :: String
+
+________________________________________________________________________________________________________________________
+
+
+                                            ////////////////////////
+                                            //// REQUEST VALUES ////
+                                            ////////////////////////
+
+                                          -----------------------------
+                                          | ALL FUNCTIONS (SAVE AUTH) |
+                                          -----------------------------
+
+
+________________________________________________________________________________________________________________________
+
+
+
+
