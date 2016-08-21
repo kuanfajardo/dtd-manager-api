@@ -11,6 +11,11 @@ require_once 'APIFramework.php';
 
 class DeltsManagerAPI extends APIFramework
 {
+
+    ////////////////////
+    //// PROPERTIES ////
+    ////////////////////
+
     /**
      * @var \Models\User User to be used in request
      */
@@ -28,6 +33,10 @@ class DeltsManagerAPI extends APIFramework
      */
     protected $success;
 
+
+    /////////////////////
+    //// CONSTRUCTOR ////
+    /////////////////////
 
     /**
      * DeltsManagerAPI constructor.
@@ -107,9 +116,14 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // API FUNCTIONS
 
-    // ACCOUNT FUNCTIONS
+    ///////////////////////
+    //// API FUNCTIONS ////
+    ///////////////////////
+
+    //--------------------
+    // ACCOUNT FUNCTIONS |
+    //--------------------
 
     /**
      * Endpoint function for /account. Redirects according to verb /account/<verb>
@@ -189,7 +203,6 @@ class DeltsManagerAPI extends APIFramework
         return $punts;
     }
 
-
     /**
      * Method for /account/checkoff [POST]
      *
@@ -227,8 +240,9 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-
-    // SCHEDULING FUNCTIONS
+    //-----------------------
+    // SCHEDULING FUNCTIONS |
+    //-----------------------
 
     /**
      * Endpoint function for /schedulingRedirects according to verb /scheduling/<verb>
@@ -328,7 +342,9 @@ class DeltsManagerAPI extends APIFramework
     }
 
 
-    // MANAGER FUNCTIONS
+    //---------------------
+    // MANAGER FUNCTIONS  |
+    //---------------------
 
     /**
      * Endpoint method for /manager. Redirects according to verb /manager/<verb>
@@ -507,7 +523,11 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // AUTHENTICATE FUNCTIONS
+
+    //--------------------------
+    // AUTHENTICATE FUNCTIONS  |
+    //--------------------------
+
     /**
      * Method for /authenticate [POST]
      *
@@ -560,7 +580,11 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    // HELPER FUNCTIONS
+
+    //-------------------
+    // HELPER FUNCTIONS |
+    //-------------------
+
     private function unique_string($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
     {
         $str = '';
