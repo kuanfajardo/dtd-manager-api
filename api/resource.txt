@@ -1,0 +1,167 @@
+ACCOUNT METHODS
+(1) account/
+
+"SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?"
+
+"id" : INT(11) :: Int
+"first name" : VARCHAR(40) :: String
+"full name" : VARCHAR(?)bc CONCAT :: String
+"email" : VARCHAR(100) :: String
+
+SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM)
+foreach ($res as $r) {
+    $User->user_privileges[] = $r[0];
+}
+
+"privileges" : 0 => _ , 1 => _ , ... (ARRAY) :: Array
+
+________________________________________________________________________________________________________________________
+
+(2) account/duties
+
+"((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user =
+{$this->User->user_id} AND checker <=0) ORDER BY start ASC, dutyname ASC) UNION
+((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user =
+{$this->User->user_id} AND checker > 0) ORDER BY start ASC, dutyname ASC)"
+
+"id" : INT(10) :: Int
+"start" : DATE :: String in "YYYY-MM-DD" format
+"houseduty" : VARCHAR(256) :: String
+
+________________________________________________________________________________________________________________________
+
+(3) account/punts
+
+"SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp,
+makeup_timestamp, IF(p.makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'),
+makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC"
+
+"id" : INT(11) :: Int
+"first" or ?? : VARCHAR(40) or 'Delts Manager' :: String
+"comment" : VARCHAR(4095) :: String
+"timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"makeup_timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"first" or ?? : VARCHAR(40) or 'Delts Manager' :: String
+"makeup_comment" : VARCHAR(4095) :: String
+
+//TODO: CHANGE ABOVE FIRSTS!!!
+
+________________________________________________________________________________________________________________________
+
+(4) account/post_checkoff
+
+SUCCESS ::
+"status" : 1 :: Int
+
+ELSE ::
+"error" : "{Error Message}" :: String
+
+________________________________________________________________________________________________________________________
+
+
+SCHEDULING METHODS
+(1) scheduling/house_duties
+
+"SELECT title FROM housedutieslkp"
+
+"title" : VARCHAR(256) :: String
+
+________________________________________________________________________________________________________________________
+
+(2) scheduling/update_duty
+
+SUCCESS ::
+ "status" : 1 :: Int
+
+ ELSE ::
+ "error" : "{Error Message}" :: String
+
+________________________________________________________________________________________________________________________
+
+
+MANAGER FUNCTIONS
+(1) manager/duties
+
+"SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM
+housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d"
+
+"id" : INT(11) :: Int
+?? : VARCHAR(?) bc CONCAT :: String
+"houseduty" : VARCHAR(256) :: String
+"start" : DATE :: String in "YYYY-MM-DD" format
+"checker" : INT(11) :: Int
+"checktime" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"checkcomments" : VARCHAR(2048) :: String
+
+________________________________________________________________________________________________________________________
+
+(2) manager/punts
+
+"SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = p.user), IF(p.given_by > 0, (SELECT first FROM users
+WHERE id = p.given_by), 'Delts Manager'), timestamp, comment, IF(makeup_given_by > 0, (SELECT first FROM users WHERE
+id = p.makeup_given_by), 'Delts Manager'), makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC"
+
+
+"id" : INT(11) :: Int
+?? : VARCHAR(?) bc CONCAT :: String
+"first" or ?? : VARCHAR(40) or 'Delts Manager' :: String
+"timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"comment" : VARCHAR(4095) :: String
+"first" or ?? : VARCHAR(40) or 'Delts Manager' :: String
+"makeup_timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"makeup_comment" : VARCHAR(4095) :: String
+
+________________________________________________________________________________________________________________________
+
+(3) manager/duty_checkoffs
+
+"SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user), (SELECT title FROM housedutieslkp WHERE
+id = r.duty), start FROM houseduties r WHERE checker=-1"
+
+"id" : INT(10) :: Int
+?? : VARCHAR(?) bc CONCAT :: String
+"title" : VARCHAR(256) :: String
+"start" : DATE :: String in "YYYY-MM-DD" format
+
+________________________________________________________________________________________________________________________
+
+(4) manager/checkoff_duty
+
+SUCCESS ::
+ "status" : {code} :: Int
+ "description" : {desc} :: String
+
+ ELSE ::
+ "error" : "{Error Message}" :: String
+
+________________________________________________________________________________________________________________________
+
+(5) manager/punt
+
+SUCCESS ::
+ "status" : 1 :: Int
+
+ ELSE ::
+ "error" : "{Error Message}" :: String
+
+________________________________________________________________________________________________________________________
+
+
+AUTHENTICATION METHOD
+
+(1) authenticate/
+
+PART A ::
+"realm" : $realm :: String
+"nonce" : $nonce :: String
+"opaque" :  $opaque :: String
+
+PART B ::
+"status" : {code} :: Int
+
+________________________________________________________________________________________________________________________
+
+FOR ALL
+
+ERROR ::
+"error" : "{Error Message}" :: String
