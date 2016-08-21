@@ -3,9 +3,9 @@ ACCOUNT METHODS
 
 "SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?"
 
-"id" : INT(11) :: Int
-"first name" : VARCHAR(40) :: String
-"full name" : VARCHAR(?)bc CONCAT :: String
+"user_id" : INT(11) :: Int
+"first_name" : VARCHAR(40) :: String
+"full_name" : VARCHAR(?) bc CONCAT :: String
 "email" : VARCHAR(100) :: String
 
 SELECT role FROM roles WHERE user={$res_id};")->fetch_all(MYSQLI_NUM)
