@@ -379,7 +379,7 @@ class DeltsManagerAPI extends APIFramework
      */
     private function manager_punts() {
         if (user_authorized([USER_HOUSE_MANAGER, USER_HONOR_BOARD])) {
-            $punts_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = p.user), IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), timestamp, comment, IF(makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'), makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC";
+            $punts_query = "SELECT id AS punt_id, (SELECT CONCAT(first, ' ', last) AS punted_user_name FROM users WHERE id = p.user), IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager') AS given_by, timestamp, comment, IF(makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), '---') AS makeup_given_by, makeup_timestamp, makeup_comment FROM punts p ORDER BY timestamp DESC";
             $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
             return $punts;
