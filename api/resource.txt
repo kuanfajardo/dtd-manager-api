@@ -42,7 +42,7 @@ DESC";
 "comment" : VARCHAR(4095) :: String
 "timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
 "makeup_timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
-"makeup_given_by" : VARCHAR(40) or 'Delts Manager' :: String
+"makeup_given_by" : VARCHAR(40) or '---' :: String
 "makeup_comment" : VARCHAR(4095) :: String
 
 ________________________________________________________________________________________________________________________
