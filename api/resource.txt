@@ -117,13 +117,13 @@ ________________________________________________________________________________
 
 (3) manager/duty_checkoffs
 
-"SELECT id,(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user), (SELECT title FROM housedutieslkp WHERE
-id = r.duty), start FROM houseduties r WHERE checker=-1"
+"SELECT id as duty_id,(SELECT CONCAT(first,' ',last) AS duty_user_name FROM users WHERE id=r.user), (SELECT title AS
+duty_name FROM housedutieslkp WHERE id = r.duty), start AS date FROM houseduties r WHERE checker=-1;";
 
-"id" : INT(10) :: Int
-?? : VARCHAR(?) bc CONCAT :: String
-"title" : VARCHAR(256) :: String
-"start" : DATE :: String in "YYYY-MM-DD" format
+"duty_id" : INT(10) :: Int
+"duty_user_name" : VARCHAR(?) bc CONCAT :: String
+"duty_name" : VARCHAR(256) :: String
+"date" : DATE :: String in "YYYY-MM-DD" format
 
 ________________________________________________________________________________________________________________________
 
