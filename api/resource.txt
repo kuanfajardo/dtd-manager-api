@@ -32,19 +32,18 @@ ________________________________________________________________________________
 
 (3) account/punts
 
-"SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp,
-makeup_timestamp, IF(p.makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'),
-makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC"
+"SELECT id AS punt_id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager') AS given_by,
+comment, timestamp, makeup_timestamp, IF(p.makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by),
+'Delts Manager') AS makeup_given_by, makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp
+DESC";
 
-"id" : INT(11) :: Int
-"first" or ?? : VARCHAR(40) or 'Delts Manager' :: String
+"punt_id" : INT(11) :: Int
+"given_by" : VARCHAR(40) or 'Delts Manager' :: String
 "comment" : VARCHAR(4095) :: String
 "timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
 "makeup_timestamp" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
-"first" or ?? : VARCHAR(40) or 'Delts Manager' :: String
+"makeup_given_by" : VARCHAR(40) or 'Delts Manager' :: String
 "makeup_comment" : VARCHAR(4095) :: String
-
-//TODO: CHANGE ABOVE FIRSTS!!!
 
 ________________________________________________________________________________________________________________________
 

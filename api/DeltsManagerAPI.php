@@ -163,7 +163,7 @@ class DeltsManagerAPI extends APIFramework
 
         return $duties;
         */
-        
+
         $duties_query = "SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <= 0 UNION SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0 ORDER BY date ASC, duty_name ASC)";
         $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
@@ -183,7 +183,7 @@ class DeltsManagerAPI extends APIFramework
         return $punts;
         */
 
-        $punts_query = "SELECT id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager'), comment, timestamp, makeup_timestamp, IF(p.makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager'), makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC";
+        $punts_query = "SELECT id AS punt_id, IF(p.given_by > 0, (SELECT first FROM users WHERE id = p.given_by), 'Delts Manager') AS given_by, comment, timestamp, makeup_timestamp, IF(p.makeup_given_by > 0, (SELECT first FROM users WHERE id = p.makeup_given_by), 'Delts Manager') AS makeup_given_by, makeup_comment FROM punts p WHERE user = {$this->User->user_id} ORDER BY timestamp DESC";
         $punts = $this->mysqli->query($punts_query)->fetch_all(MYSQLI_ASSOC);
 
         return $punts;
