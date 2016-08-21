@@ -571,6 +571,7 @@ class DeltsManagerAPI extends APIFramework
     }
 
     // TODO: Maybe use?
+    /*
     private function api_status_description_from_code($code) {
         switch ($code) {
             case 0:
@@ -593,4 +594,5 @@ class DeltsManagerAPI extends APIFramework
                 return 'Unknown Error';
         }
     }
+    */
 }
