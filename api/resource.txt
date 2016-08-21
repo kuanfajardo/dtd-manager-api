@@ -16,7 +16,7 @@ foreach ($res as $r) {
 "privileges" : 0 => _ , 1 => _ , ... (ARRAY) :: Array
 
 ________________________________________________________________________________________________________________________
-
+//TODO: add duty description
 (2) account/duties
 
 "SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM
@@ -61,9 +61,9 @@ ________________________________________________________________________________
 SCHEDULING METHODS
 (1) scheduling/house_duties
 
-"SELECT title FROM housedutieslkp"
+"SELECT title AS duty_title FROM housedutieslkp";
 
-"title" : VARCHAR(256) :: String
+"duty_title" : VARCHAR(256) :: String
 
 ________________________________________________________________________________________________________________________
 

@@ -261,7 +261,8 @@ class DeltsManagerAPI extends APIFramework
         }
         */
 
-        $houseduties = $this->mysqli->query("SELECT title FROM housedutieslkp;")->fetch_all(MYSQLI_ASSOC);
+        $houseduties_query = "SELECT title AS duty_title FROM housedutieslkp";
+        $houseduties = $this->mysqli->query($houseduties_query)->fetch_all(MYSQLI_ASSOC);
 
         return $houseduties;
     }
