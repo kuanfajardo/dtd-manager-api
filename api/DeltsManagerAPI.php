@@ -361,7 +361,7 @@ class DeltsManagerAPI extends APIFramework
      */
     private function manager_duties() {
         if(user_authorized([USER_HOUSE_MANAGER])) {
-            $duties_query = "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d";
+            $duties_query = "SELECT id AS duty_id, (SELECT CONCAT(first, ' ', last) AS duty_user_name FROM users WHERE id = d.user), (SELECT title AS duty_name FROM housedutieslkp WHERE id = d.duty), start AS date, (SELECT CONCAT(first, ' ', last) AS checker FROM users WHERE id = d.checker), checktime AS check_time, checkcomments AS check_comments FROM houseduties d";
             $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
             return $duties;

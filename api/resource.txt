@@ -46,7 +46,8 @@ DESC";
 "makeup_comment" : VARCHAR(4095) :: String
 
 ________________________________________________________________________________________________________________________
-
+// TODO: for post functions, resource key names
+// TODO: for all functions resource key names
 (4) account/post_checkoff
 
 SUCCESS ::
@@ -84,13 +85,17 @@ MANAGER FUNCTIONS
 "SELECT id, (SELECT CONCAT(first, ' ', last) FROM users WHERE id = d.user), (SELECT title AS houseduty FROM
 housedutieslkp WHERE id = d.duty), start, checker, checktime, checkcomments FROM houseduties d"
 
-"id" : INT(11) :: Int
-?? : VARCHAR(?) bc CONCAT :: String
-"houseduty" : VARCHAR(256) :: String
-"start" : DATE :: String in "YYYY-MM-DD" format
-"checker" : INT(11) :: Int
-"checktime" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
-"checkcomments" : VARCHAR(2048) :: String
+"SELECT id AS duty_id, (SELECT CONCAT(first, ' ', last) AS duty_user_name FROM users WHERE id = d.user), (SELECT title
+AS duty_name FROM housedutieslkp WHERE id = d.duty), start AS date, (SELECT CONCAT(first, ' ', last) AS checker FROM
+users WHERE id = d.checker), checktime AS check_time, checkcomments AS check_comments FROM houseduties d";
+
+"duty_id" : INT(11) :: Int
+"duty_user_name" : VARCHAR(?) bc CONCAT :: String
+"duty_name" : VARCHAR(256) :: String
+"date" : DATE :: String in "YYYY-MM-DD" format
+"checker" : VARCHAR(?) bc CONCAT :: String
+"check_time" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"check_comments" : VARCHAR(2048) :: String
 
 ________________________________________________________________________________________________________________________
 
