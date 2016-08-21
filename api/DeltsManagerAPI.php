@@ -163,8 +163,8 @@ class DeltsManagerAPI extends APIFramework
 
         return $duties;
         */
-
-        $duties_query = "((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <=0) ORDER BY start ASC, dutyname ASC) UNION ((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0) ORDER BY start ASC, dutyname ASC)";
+        
+        $duties_query = "SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <= 0 UNION SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0 ORDER BY date ASC, duty_name ASC)";
         $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
         return $duties;

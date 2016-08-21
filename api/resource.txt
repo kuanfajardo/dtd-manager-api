@@ -19,14 +19,14 @@ ________________________________________________________________________________
 
 (2) account/duties
 
-"((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user =
-{$this->User->user_id} AND checker <=0) ORDER BY start ASC, dutyname ASC) UNION
-((SELECT id, start, (SELECT title AS houseduty FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user =
-{$this->User->user_id} AND checker > 0) ORDER BY start ASC, dutyname ASC)"
+"SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM
+houseduties r WHERE user = {$this->User->user_id} AND checker <= 0 UNION SELECT id AS duty_id, start AS date,
+(SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id}
+AND checker > 0 ORDER BY date ASC, duty_name ASC)";
 
-"id" : INT(10) :: Int
-"start" : DATE :: String in "YYYY-MM-DD" format
-"houseduty" : VARCHAR(256) :: String
+"duty_id" : INT(10) :: Int
+"date" : DATE :: String in "YYYY-MM-DD" format
+"duty_name" : VARCHAR(256) :: String
 
 ________________________________________________________________________________________________________________________
 
