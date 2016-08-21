@@ -46,27 +46,24 @@ class DeltsManagerAPI extends APIFramework
         define("USER_ADMIN", 4);
 
         if (!$this->endpoint == 'authenticate') {
-            // get API Key factory
-            // TODO: figure out whether or not i need this
-            $APIKeyFactory = \Models\APIKeyFactory::Instance();
+            $json_data = json_decode($this->file);
 
             // Check for API Key and User token errors
             // TODO: implement success codes
-            if (!array_key_exists('apiKey', $this->request)) {
+            if (!array_key_exists('apiKey', $json_data)) {
                 throw new Exception("No API Key provided");
-            } else if (!\Models\APIKeyFactory::verify_key($this->request['apiKey'], $origin)) {
+            } else if (!\Models\APIKeyFactory::verify_key($json_data['apiKey'], $origin)) {
                 throw new Exception('Invalid API Key');
             }
 
-
             // Token Validation and User Creation
-            if (!array_key_exists('token', $this->request)) {
+            if (!array_key_exists('token', $json_data)) {
                 throw new Exception("No user token provided");
             }
 
             $User = new Models\User();
 
-            if (!$User->verify_token($this->request['token'])) {
+            if (!$User->verify_token($json_data['token'])) {
                 throw new Exception('Invalid Token');
             }
 
@@ -77,7 +74,7 @@ class DeltsManagerAPI extends APIFramework
 
             //$email = $User->email_from_token($this->request['token']);
             $email = $this->request['email'];
-            $stmt = $this->mysqli->prepare("(SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?)");
+            $stmt = $this->mysqli->prepare("SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?");
             $stmt->bind_param("s", $email);
             $stmt->bind_result($res_id, $res_email, $res_first_name, $res_full_name);
 
