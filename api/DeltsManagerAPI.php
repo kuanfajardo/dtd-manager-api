@@ -49,7 +49,6 @@ class DeltsManagerAPI extends APIFramework
             $json_data = json_decode($this->file);
 
             // Check for API Key and User token errors
-            // TODO: implement success codes
             if (!array_key_exists('apiKey', $json_data)) {
                 throw new Exception("No API Key provided");
             } else if (!\Models\APIKeyFactory::verify_key($json_data['apiKey'], $origin)) {
@@ -211,7 +210,6 @@ class DeltsManagerAPI extends APIFramework
         $res->bind_param("ii",$duty_id, $this->User->user_id);
         $res->execute();
 
-        // TODO: Implement status codes
         if($res->affected_rows > 0) {
             send_email($this->User->user_email,"Checkoff Requested","{$this->User->user_full_name},\r\n\r\nYou just requested a checkoff for a duty.\r\n\r\nCheers,\r\nDM");
             send_email("dtd-checkers@mit.edu","Checkoff Requested","Checkers,\r\n\r\n{$this->User->user_full_name} just requested a checkoff. Visit http://".BASE_URL."/checker_dashboard.php to give them a checkoff.\r\n\r\nCheers,\r\nDM");
@@ -220,10 +218,12 @@ class DeltsManagerAPI extends APIFramework
                 'status' => 1
             );
         } else {
-
+            throw new Exception("DB Error: not updated");
+            /*
             return array(
                 'status' => 0
             );
+            */
         }
     }
 
@@ -432,7 +432,7 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("User ID not found");
         }
 
-        $checker = $this->User->user_id; // TODO: implement for real (send from app)
+        $checker = $this->User->user_id;
 
         $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
         $stmt->bind_param("sii",$comments,$user,$duty_id);
@@ -451,7 +451,7 @@ class DeltsManagerAPI extends APIFramework
 
         if (!($stmt->affected_rows > 0)) {
             return array(
-                'status' => 1,
+                'status' => 2,
                 'description' => 'Email not sent'
             );
         }
@@ -464,7 +464,7 @@ class DeltsManagerAPI extends APIFramework
         send_email($user_email,$subject,$message);
 
         return array(
-            'status' => 2,
+            'status' => 1,
             'description' => 'Email sent'
         );
     }
@@ -495,13 +495,14 @@ class DeltsManagerAPI extends APIFramework
 
         $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
         $stmt->bind_param("iis",$user_to_be_punted, $user, $comments);
+        $stmt->execute();
 
-        if($stmt->execute()) {
+        if($stmt->affected_rows > 0) {
             return array(
                 'status' => 1
             );
         } else {
-            throw new Exception("DB error");
+            throw new Exception("DB error: not updated");
         }
     }
 
@@ -569,6 +570,7 @@ class DeltsManagerAPI extends APIFramework
         return $str;
     }
 
+    // TODO: Maybe use?
     private function api_status_description_from_code($code) {
         switch ($code) {
             case 0:
