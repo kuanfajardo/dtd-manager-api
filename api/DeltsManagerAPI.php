@@ -391,6 +391,8 @@ class DeltsManagerAPI extends APIFramework
                 return $this->checkoff_duty();
             case 'punt':
                 return $this->punt();
+            case 'users':
+                return $this->users();
             default:
                 throw new Exception("Verb Not Found");
         }
@@ -553,6 +555,19 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("DB error: not updated");
         }
     }
+
+    /*
+    * Method for /manager/users [GET]
+    *
+    * @return Array Array of all delt names
+    */
+    private function users() {
+        $users_query = "SELECT CONCAT(first, ' ', last) AS user_name FROM users";
+        $users = $this->mysqli->query($users_query)->fetch_all(MYSQLI_ASSOC);
+
+        return $users;
+    }
+
 
 
     //--------------------------
