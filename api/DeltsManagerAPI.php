@@ -556,10 +556,10 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
-    /*
+    /**
     * Method for /manager/users [GET]
     *
-    * @return Array Array of all delt names
+    * @return array Array of all delt names
     */
     private function users() {
         $users_query = "SELECT CONCAT(first, ' ', last) AS user_name FROM users";
