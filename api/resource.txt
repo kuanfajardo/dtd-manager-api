@@ -204,7 +204,7 @@ ________________________________________________________________________________
 (4) manager/checkoff_duty
 "comments" : Comment on checkoff :: String (OPTIONAL)
 "duty_id" : ID of duty to checkoff :: Int
-"user_id" : ID of user ?? WHY
+//"user_id" : ID of user ?? WHY
 
 
 (5) manager/punt

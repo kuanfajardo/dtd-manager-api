@@ -470,16 +470,19 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("Duty ID not found");
         }
 
+        /*
         if(array_key_exists("user_id", $json_data)) {
             $user = $this->mysqli->real_escape_string($json_data["user_id"]);
         } else {
             throw new Exception("User ID not found");
         }
+        */
 
         $checker = $this->User->user_id;
 
-        $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
-        $stmt->bind_param("sii",$comments,$user,$duty_id);
+        //$stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
+        $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,checker={$checker} WHERE id=?");
+        $stmt->bind_param("sii",$comments,$duty_id);
         $stmt->execute();
 
         if ($stmt->affected_rows <= 0) {
