@@ -178,7 +178,8 @@ class DeltsManagerAPI extends APIFramework
         return $duties;
         */
 
-        $duties_query = "SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty), (SELECT description FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker <= 0 UNION SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} AND checker > 0 ORDER BY date ASC, duty_name ASC)";
+        //$duties_query = "SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty), (SELECT description FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE user = {$this->User->user_id} ORDER BY date ASC, duty_name ASC";
+        $duties_query = "SELECT id AS duty_id, start AS date, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty), (SELECT description FROM housedutieslkp WHERE id = r.duty), CASE r.checker WHEN -1 THEN 'Pending' WHEN 0 THEN 'Incomplete' ELSE 'Complete' END AS status, IF(r.checker > 0, (SELECT first FROM users WHERE id = r.checker), 'N/A') AS checker, checkcomments AS check_comments FROM houseduties r";
         $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
         return $duties;

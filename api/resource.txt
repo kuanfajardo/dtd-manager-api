@@ -22,7 +22,9 @@ _________________________________________________________
 "date" : DATE :: String in "YYYY-MM-DD" format
 "duty_name" : VARCHAR(256) :: String
 "description" : VARCHAR(2048) :: String
-
+"status" : 'Complete', 'Pending', or 'Incomplete' :: String
+"checker" : VARCHAR(40) or 'N/A' :: String
+"check_comments" : VARCHAR(2048) :: String
 _________________________________________________________
 
 (3) account/punts
