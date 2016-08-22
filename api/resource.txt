@@ -54,11 +54,20 @@ ________________________________________________________________________________
 
 (1) scheduling/house_duties
 
+"duty_id" : INT(10) :: Int
+"day_of_week" : Int 0-6 :: Int
+"user_name" : VARCHAR(?) bc CONCAT :: String
+"duty_name" : VARCHAR(256) :: String
+
+_________________________________________________________
+
+(2) scheduling/house_duty_names
+
 "duty_title" : VARCHAR(256) :: String
 
 _________________________________________________________
 
-(2) scheduling/update_duty
+(3) scheduling/update_duty
 
 SUCCESS ::
 "status" : 1 :: Int

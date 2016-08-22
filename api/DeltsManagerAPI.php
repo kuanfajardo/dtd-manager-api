@@ -253,6 +253,8 @@ class DeltsManagerAPI extends APIFramework
     protected function scheduling() {
         switch ($this->verb) {
             case 'house_duties':
+                return $this->house_duties();
+            case 'house_duty_names':
                 return $this->house_duty_names();
             case 'update_duty':
                 return $this->update_duty();
@@ -262,7 +264,27 @@ class DeltsManagerAPI extends APIFramework
     }
 
     /**
-     * Method for /scheduling/house_duties [GET]
+     * Method for scheduling/house_duties [GET]
+     *
+     * @return array Array of ALL duties for the current week
+     */
+    protected function house_duties() {
+
+        $weekstart = strtotime(isset($_GET["week"])?$_GET["week"]:"Sunday 12:00:00am");
+        $weekstart -= date('N',$weekstart)*24*60*60;
+        $weekfinish = $weekstart + 7*24*60*60-1;
+
+        $l = date('Y-m-d',$weekstart);
+        $h = date('Y-m-d',$weekfinish);
+
+        $duties_query ="SELECT id as duty_id,(DAYOFWEEK(start)-1) AS day_of_week, IF(r.user=0,'Available',(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user)) AS user_name, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE start>='{$l}' AND start<='{$h}' ORDER BY start ASC,id ASC;";
+        $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
+
+        return $duties;
+    }
+
+    /**
+     * Method for /scheduling/house_duty_names [GET]
      *
      * @return array Array of house duties
      */
