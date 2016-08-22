@@ -340,8 +340,9 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("Schedule not open");
         }
 
+        // TODO: test whether to use 'true' or true
         switch ($claim) {
-            case 'true':
+            case true:
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=? WHERE id=? AND user=0 AND start >= '{$l}' AND start <= '{$h}' AND checker=0");
                 $stmt->bind_param("ii",$this->User->user_id, $duty_id);
                 $stmt->execute();
@@ -352,7 +353,7 @@ class DeltsManagerAPI extends APIFramework
                 } else {
                     throw new Exception("Duty already taken");
                 }
-            case 'false':
+            case false:
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=0 WHERE id=? AND user=?");
                 $stmt->bind_param("ii",$duty_id,$this->User->user_id);
                 $stmt->execute();
