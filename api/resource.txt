@@ -189,7 +189,7 @@ ________________________________________________________________________________
                                             --------------------------
 
 (2) scheduling/update_duty
-"houseduty_id" : ID of house duty to claim/disclaim :: Int
+"duty_id" : ID of duty to claim/disclaim :: Int
 "claim" : Boolean value whether to claim (true) or dislaim (false) :: Bool
 
 

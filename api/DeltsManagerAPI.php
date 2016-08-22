@@ -313,10 +313,10 @@ class DeltsManagerAPI extends APIFramework
         // parse input data
         $json_data = json_decode($this->file);
 
-        if (array_key_exists('houseduty_id', $json_data)) {
-            $houseduty_id = $json_data['houseduty_id'];
+        if (array_key_exists('duty_id', $json_data)) {
+            $duty_id = $json_data['duty_id'];
         } else {
-            throw new Exception("No house duty id");
+            throw new Exception("No duty id");
         }
 
         if (array_key_exists('claim', $json_data)) {
@@ -342,7 +342,7 @@ class DeltsManagerAPI extends APIFramework
         switch ($claim) {
             case 'true':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=? WHERE id=? AND user=0 AND start >= '{$l}' AND start <= '{$h}' AND checker=0");
-                $stmt->bind_param("ii",$this->User->user_id, $houseduty_id);
+                $stmt->bind_param("ii",$this->User->user_id, $duty_id);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
                     return array(
@@ -353,7 +353,7 @@ class DeltsManagerAPI extends APIFramework
                 }
             case 'false':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=0 WHERE id=? AND user=?");
-                $stmt->bind_param("ii",$houseduty_id,$this->User->user_id);
+                $stmt->bind_param("ii",$duty_id,$this->User->user_id);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
                     return array(
