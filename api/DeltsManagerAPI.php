@@ -58,9 +58,9 @@ class DeltsManagerAPI extends APIFramework
             $json_data = json_decode($this->file);
 
             // Check for API Key and User token errors
-            if (!array_key_exists('apiKey', $json_data)) {
+            if (!array_key_exists('api_key', $json_data)) {
                 throw new Exception("No API Key provided");
-            } else if (!\Models\APIKeyFactory::verify_key($json_data['apiKey'], $origin)) {
+            } else if (!\Models\APIKeyFactory::verify_key($json_data['api_key'], $origin)) {
                 throw new Exception('Invalid API Key');
             }
 
@@ -81,7 +81,7 @@ class DeltsManagerAPI extends APIFramework
             }
 
             //$email = $User->email_from_token($this->request['token']);
-            $email = $this->request['email'];
+            $email = $this->$json_data['email'];
             $stmt = $this->mysqli->prepare("SELECT id,email,first,CONCAT(first,' ',last) AS name FROM users WHERE email=?");
             $stmt->bind_param("s", $email);
             $stmt->bind_result($res_id, $res_email, $res_first_name, $res_full_name);
@@ -212,8 +212,8 @@ class DeltsManagerAPI extends APIFramework
     private function post_checkoff() {
         $json_data = json_decode($this->file);
 
-        if(array_key_exists("DutyID", $json_data)) {
-            $duty_id = $this->mysqli->real_escape_string($json_data["DutyID"]);
+        if(array_key_exists("duty_id", $json_data)) {
+            $duty_id = $this->mysqli->real_escape_string($json_data["duty_id"]);
         } else {
             throw new Exception("Duty ID not found");
         }
@@ -291,11 +291,15 @@ class DeltsManagerAPI extends APIFramework
         // parse input data
         $json_data = json_decode($this->file);
 
-        if (!array_key_exists('HouseDutyID', $json_data)) {
-            throw new Exception("No house id");
+        if (array_key_exists('houseduty_id', $json_data)) {
+            $houseduty_id = $json_data['houseduty_id'];
+        } else {
+            throw new Exception("No house duty id");
         }
 
-        if (!array_key_exists('Claim', $json_data)) {
+        if (array_key_exists('claim', $json_data)) {
+            $claim = $json_data['claim'];
+        } else {
             throw new Exception("No claim data provided");
         }
 
@@ -313,10 +317,10 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("Schedule not open");
         }
 
-        switch ($json_data['Claim']) {
+        switch ($claim) {
             case 'true':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=? WHERE id=? AND user=0 AND start >= '{$l}' AND start <= '{$h}' AND checker=0");
-                $stmt->bind_param("ii",$this->User->user_id, $json_data['HouseDutyID']);
+                $stmt->bind_param("ii",$this->User->user_id, $houseduty_id);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
                     return array(
@@ -327,7 +331,7 @@ class DeltsManagerAPI extends APIFramework
                 }
             case 'false':
                 $stmt = $this->mysqli->prepare("UPDATE houseduties SET user=0 WHERE id=? AND user=?");
-                $stmt->bind_param("ii",$json_data['HouseDutyID'],$this->User->user_id);
+                $stmt->bind_param("ii",$houseduty_id,$this->User->user_id);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
                     return array(
@@ -431,20 +435,20 @@ class DeltsManagerAPI extends APIFramework
     private function checkoff_duty() {
         $json_data = json_decode($this->file);
 
-        if(array_key_exists("Comments", $json_data)) {
-            $comments = $this->mysqli->real_escape_string($json_data["Comments"]);
+        if(array_key_exists("comments", $json_data)) {
+            $comments = $this->mysqli->real_escape_string($json_data["comments"]);
         } else {
-            throw new Exception("Comments not found");
+            $comments = "";
         }
 
-        if(array_key_exists("DutyID", $json_data)) {
-            $duty_id = $this->mysqli->real_escape_string($json_data["DutyID"]);
+        if(array_key_exists("duty_id", $json_data)) {
+            $duty_id = $this->mysqli->real_escape_string($json_data["duty_id"]);
         } else {
             throw new Exception("Duty ID not found");
         }
 
-        if(array_key_exists("UserID", $json_data)) {
-            $user = $this->mysqli->real_escape_string($json_data["UserID"]);
+        if(array_key_exists("user_id", $json_data)) {
+            $user = $this->mysqli->real_escape_string($json_data["user_id"]);
         } else {
             throw new Exception("User ID not found");
         }
@@ -495,16 +499,16 @@ class DeltsManagerAPI extends APIFramework
     private function punt() {
         $json_data = json_decode($this->file);
 
-        if(array_key_exists("PuntedID", $json_data)) {
-            $user_to_be_punted = $this->mysqli->real_escape_string($json_data["PuntedID"]);
+        if(array_key_exists("punted_id", $json_data)) {
+            $user_to_be_punted = $this->mysqli->real_escape_string($json_data["punted_id"]);
         } else {
             throw new Exception("User to be punted not found");
         }
 
-        if(array_key_exists("Comments", $json_data)) {
-            $comments = $this->mysqli->real_escape_string($json_data["Comments"]);
+        if(array_key_exists("comments", $json_data)) {
+            $comments = $this->mysqli->real_escape_string($json_data["comments"]);
         } else {
-            throw new Exception("Comments not found");
+            $comments = "";
         }
 
         $user = $this->User->user_id;
@@ -540,12 +544,21 @@ class DeltsManagerAPI extends APIFramework
      */
     protected function authenticate() {
         $json_data = json_decode($this->file);
+
+        // Check for API Key
+        if (!array_key_exists('api_key', $json_data)) {
+            throw new Exception("No API Key provided");
+        } else if (!\Models\APIKeyFactory::verify_key($json_data['api_key'], "")) {
+            throw new Exception('Invalid API Key');
+        }
+
         $digest_keys = ['username', 'realm', 'nonce', 'opaque', 'method', 'uri', 'response'];
 
         $realm = md5('dtd');
         $nonce = md5($this->unique_string(32));
         $opaque = md5($this->unique_string(32));
 
+        // PART A
         foreach ($digest_keys as $key) {
             if (!array_key_exists($key, $json_data)) {
                 return array(
@@ -556,12 +569,13 @@ class DeltsManagerAPI extends APIFramework
             }
         }
 
+        // PART B
         $username = $json_data['username'];
         $response = $json_data['response'];
         $method = $json_data['method'];
         $uri = $json_data['uri'];
 
-        $password_query = "SELECT password from users WHERE email = {$this->request['email']}";
+        $password_query = "SELECT password from users WHERE email = {$json_data['email']}";
         $password = $this->mysqli->query($password_query)->fetch_all(MYSQLI_ASSOC);
 
 

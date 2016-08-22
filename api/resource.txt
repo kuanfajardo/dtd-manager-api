@@ -35,9 +35,8 @@ _________________________________________________________
 "makeup_comment" : VARCHAR(4095) :: String
 
 _________________________________________________________
-// TODO: for post functions, resource key names
-// TODO: for all functions resource key names
-(4) account/post_checkoff
+
+(4) account/checkoff
 
 SUCCESS ::
 "status" : 1 :: Int
@@ -161,6 +160,55 @@ ________________________________________________________________________________
                                           | ALL FUNCTIONS (SAVE AUTH) |
                                           -----------------------------
 
+"api_key" : API Key (make sure from app) :: String
+"token" : User Token (make sure has logged in) :: Int (> 0 is valid)
+"email" : User Email (for identification) :: String
+
+________________________________________________________________________________________________________________________
+
+                                            -----------------------
+                                            |  ACCOUNT FUNCTIONS  |
+                                            -----------------------
+
+(4) account/checkoff
+"duty_id" : ID of duty to request checkoff :: Int
+
+                                            --------------------------
+                                            |  SCHEDULING FUNCTIONS  |
+                                            --------------------------
+
+(2) scheduling/update_duty
+"houseduty_id" : ID of house duty to claim/disclaim :: Int
+"claim" : Boolean value whether to claim (true) or dislaim (false) :: Bool
+
+
+                                            -----------------------
+                                            |  MANAGER FUNCTIONS  |
+                                            -----------------------
+
+(4) manager/checkoff_duty
+"comments" : Comment on checkoff :: String (OPTIONAL)
+"duty_id" : ID of duty to checkoff :: Int
+"user_id" : ID of user ?? WHY
+
+
+(5) manager/punt
+
+"punted_id" : ID of user to be punted :: Int
+"comments" : Comment on punt :: String
+
+                                        ---------------------------
+                                        |  AUTHENTICATE FUNCTION  |
+                                        ---------------------------
+                                        
+"api_key" : API Key
+"username" : From login emailTextField :: String
+"realm" : Returned same :: String
+"nonce" : Returned same :: String
+"opaque" : Returned same :: String
+"method" : Method :: String
+"uri" : All URI :: String
+"response" : md5 hash calculation for auth
 
 ________________________________________________________________________________________________________________________
 
