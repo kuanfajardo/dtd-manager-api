@@ -489,9 +489,10 @@ class DeltsManagerAPI extends APIFramework
             throw new Exception("DB error: failed to checkoff");
         }
 
-        $stmt = $this->mysqli->prepare("SELECT email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
+        // added "first, and $user" to not delete {$user} in email thingy below
+        $stmt = $this->mysqli->prepare("SELECT first, email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
         $stmt->bind_param("i",$duty_id);
-        $stmt->bind_result($user_email);
+        $stmt->bind_result($user, $user_email);
         $stmt->execute();
         $stmt->fetch();
         $stmt->free_result();
