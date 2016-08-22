@@ -90,8 +90,8 @@ ________________________________________________________________________________
 "duty_name" : VARCHAR(256) :: String
 "description" : VARCHAR(2048) :: String
 "date" : DATE :: String in "YYYY-MM-DD" format
-"checker" : VARCHAR(?) bc CONCAT :: String
-"check_time" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
+"status" : 'Complete', 'Pending', or 'Incomplete' :: String
+"checker" : VARCHAR(40) or 'N/A' :: String
 "check_comments" : VARCHAR(2048) :: String
 
 _________________________________________________________
@@ -113,8 +113,10 @@ _________________________________________________________
 
 "duty_id" : INT(10) :: Int
 "duty_user_name" : VARCHAR(?) bc CONCAT :: String
-"duty_name" : VARCHAR(256) :: String
+"duty_name" : VARCHAR(256) :: String"description" : VARCHAR(2048) :: String
+"description" : VARCHAR(2048) :: String
 "date" : DATE :: String in "YYYY-MM-DD" format
+"status" : "Pending" :: String
 
 _________________________________________________________
 

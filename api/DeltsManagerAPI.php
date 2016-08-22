@@ -404,7 +404,7 @@ class DeltsManagerAPI extends APIFramework
      */
     private function manager_duties() {
         if(user_authorized([USER_HOUSE_MANAGER])) {
-            $duties_query = "SELECT id AS duty_id, (SELECT CONCAT(first, ' ', last) AS duty_user_name FROM users WHERE id = d.user), (SELECT title AS duty_name FROM housedutieslkp WHERE id = d.duty), (SELECT description FROM housedutieslkp WHERE id = d.duty), start AS date, (SELECT CONCAT(first, ' ', last) AS checker FROM users WHERE id = d.checker), checktime AS check_time, checkcomments AS check_comments FROM houseduties d";
+            $duties_query = "SELECT id AS duty_id, (SELECT CONCAT(first, ' ', last) AS duty_user_name FROM users WHERE id = d.user), (SELECT title AS duty_name FROM housedutieslkp WHERE id = d.duty), (SELECT description FROM housedutieslkp WHERE id = d.duty), start AS date,  CASE d.checker WHEN -1 THEN 'Pending' WHEN 0 THEN 'Incomplete' ELSE 'Complete' END AS status, IF(d.checker > 0, (SELECT first FROM users WHERE id = d.checker), 'N/A') AS checker, checkcomments AS check_comments FROM houseduties d";
             $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
             return $duties;
@@ -440,7 +440,7 @@ class DeltsManagerAPI extends APIFramework
      */
     private function requested_checkoffs() {
         if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER])) {
-            $checkoffs_query = "SELECT id as duty_id,(SELECT CONCAT(first,' ',last) AS duty_user_name FROM users WHERE id=r.user), (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty), start AS date FROM houseduties r WHERE checker=-1;";
+            $checkoffs_query = "SELECT id as duty_id,(SELECT CONCAT(first,' ',last) AS duty_user_name FROM users WHERE id=r.user), (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty), (SELECT description FROM housedutieslkp WHERE id = r.duty), start AS date, 'Pending' AS status FROM houseduties r WHERE checker=-1;";
             $checkoffs = $this->mysqli->query($checkoffs_query)->fetch_all(MYSQLI_ASSOC);
 
             return $checkoffs;
