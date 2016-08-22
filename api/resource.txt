@@ -15,12 +15,13 @@
 "privileges" : 0 => _ , 1 => _ , ... (ARRAY) :: Array
 
 _________________________________________________________
-//TODO: add duty description
+
 (2) account/duties
 
 "duty_id" : INT(10) :: Int
 "date" : DATE :: String in "YYYY-MM-DD" format
 "duty_name" : VARCHAR(256) :: String
+"description" : VARCHAR(2048) :: String
 
 _________________________________________________________
 
@@ -76,6 +77,7 @@ ________________________________________________________________________________
 "duty_id" : INT(11) :: Int
 "duty_user_name" : VARCHAR(?) bc CONCAT :: String
 "duty_name" : VARCHAR(256) :: String
+"description" : VARCHAR(2048) :: String
 "date" : DATE :: String in "YYYY-MM-DD" format
 "checker" : VARCHAR(?) bc CONCAT :: String
 "check_time" : TIMESTAMP :: String in "YYYY-MM-DD HH:MM:SS" format
@@ -200,7 +202,7 @@ ________________________________________________________________________________
                                         ---------------------------
                                         |  AUTHENTICATE FUNCTION  |
                                         ---------------------------
-                                        
+
 "api_key" : API Key
 "username" : From login emailTextField :: String
 "realm" : Returned same :: String
