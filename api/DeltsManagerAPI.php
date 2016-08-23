@@ -530,7 +530,7 @@ class DeltsManagerAPI extends APIFramework
         $json_data = json_decode($this->file);
 
         if(array_key_exists("punted_id", $json_data)) {
-            $user_to_be_punted = $this->mysqli->real_escape_string($json_data["punted_id"]);
+            $the_punted = $this->mysqli->$json_data["punted_id"];
         } else {
             throw new Exception("User to be punted not found");
         }
@@ -543,18 +543,26 @@ class DeltsManagerAPI extends APIFramework
 
         $user = $this->User->user_id;
 
+        $success = true;
 
-        $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
-        $stmt->bind_param("iis",$user_to_be_punted, $user, $comments);
-        $stmt->execute();
+        foreach ($the_punted as $user_to_be_punted) {
+            $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
+            $stmt->bind_param("iis", $user_to_be_punted, $user, $comments);
+            $stmt->execute();
 
-        if($stmt->affected_rows > 0) {
+            if (!$stmt->affected_rows > 0) {
+                $success = false;
+            }
+        }
+
+        if ($success) {
             return array(
                 'status' => 1
             );
         } else {
-            throw new Exception("DB error: not updated");
+            throw new Exception("DB error: at least one error");
         }
+
     }
 
     /**

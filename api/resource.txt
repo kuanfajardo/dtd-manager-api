@@ -215,7 +215,7 @@ ________________________________________________________________________________
 
 (5) manager/punt
 
-"punted_id" : ID of user to be punted :: Int
+"punted_id" : ARRAY of user_ids to be punted :: [Int]
 "comments" : Comment on punt :: String
 
                                         ---------------------------
