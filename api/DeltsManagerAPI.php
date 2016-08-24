@@ -243,6 +243,12 @@ class DeltsManagerAPI extends APIFramework
         }
     }
 
+    /**
+     * Method for /account/stats [GET]
+     *
+     * @return array Array with stts needed for overview vc -
+     * number of duties, punts, and whether house duty schedule is open
+     */
     private function user_stats() {
         $duties = $this->account_duties();
         $num_duties = count($duties);
