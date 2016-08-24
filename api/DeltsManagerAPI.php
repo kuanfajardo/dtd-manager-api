@@ -307,7 +307,7 @@ class DeltsManagerAPI extends APIFramework
         $l = date('Y-m-d',$weekstart);
         $h = date('Y-m-d',$weekfinish);
 
-        $duties_query ="SELECT id as duty_id,(DAYOFWEEK(start)-1) AS day_of_week, IF(r.user=0,'Available',(SELECT CONCAT(first,' ',last) FROM users WHERE id=r.user)) AS user_name, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE start>='{$l}' AND start<='{$h}' ORDER BY start ASC,id ASC;";
+        $duties_query ="SELECT id as duty_id,(DAYOFWEEK(start)-1) AS day_of_week, IF(r.user=0,'Available',(SELECT first FROM users WHERE id=r.user)) AS user_name, (SELECT title AS duty_name FROM housedutieslkp WHERE id = r.duty) FROM houseduties r WHERE start>='{$l}' AND start<='{$h}' ORDER BY start ASC,id ASC;";
         $duties = $this->mysqli->query($duties_query)->fetch_all(MYSQLI_ASSOC);
 
         return $duties;
