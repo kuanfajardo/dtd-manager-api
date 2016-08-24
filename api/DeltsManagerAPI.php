@@ -140,6 +140,8 @@ class DeltsManagerAPI extends APIFramework
                 return $this->account_punts();
             case 'checkoff':
                 return $this->post_checkoff();
+            case 'stats':
+                return $this->user_stats();
             default:
                 throw new Exception('Verb Not Found');
         }
@@ -239,6 +241,27 @@ class DeltsManagerAPI extends APIFramework
             );
             */
         }
+    }
+
+    private function user_stats() {
+        $duties = $this->account_duties();
+        $num_duties = count($duties);
+
+        $punts = $this->account_punts();
+        $num_punts = count($punts);
+
+        // Check for duty window
+        $weekstart = strtotime(isset($_GET["week"])?$_GET["week"]:"Sunday 12:00:00am");
+        $weekstart -= date('N',$weekstart)*24*60*60;
+        $weekfinish = $weekstart + 7*24*60*60-1;
+
+        $modify = time()<$weekfinish || (time() < $weekstart+12*60*60 && time() > $weekstart-36*60*60);
+
+        return array(
+            'num_duties' => $num_duties,
+            'num_punts' => $num_punts,
+            'schedule_open' => $modify
+        );
     }
 
     //-----------------------
