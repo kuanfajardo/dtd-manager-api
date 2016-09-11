@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="df810d89-abbe-4b00-8cd1-dc54d029e6ba" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/DeltsManagerAPI.php" afterPath="$PROJECT_DIR$/api/DeltsManagerAPI.php" />
     </list>
     <ignored path="dtd-manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,25 +41,22 @@
       <file leaf-file-name="DeltsManagerAPI.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="343" column="14" selection-start-line="343" selection-start-column="14" selection-end-line="343" selection-end-column="14" />
+            <state relative-caret-position="417">
+              <caret line="780" column="23" selection-start-line="780" selection-start-column="23" selection-end-line="780" selection-end-column="23" />
               <folding>
                 <element signature="e#255#318#0#PHP" expanded="false" />
                 <element signature="e#424#454#0#PHP" expanded="false" />
                 <element signature="e#538#578#0#PHP" expanded="false" />
                 <element signature="e#688#855#0#PHP" expanded="false" />
-                <element signature="n#__construct#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#3764#3917#0#PHP" expanded="false" />
                 <element signature="n#account#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#4442#4600#0#PHP" expanded="false" />
                 <element signature="n#account_info#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#4654#4936#0#PHP" expanded="false" />
                 <element signature="e#4971#5072#0#PHP" expanded="false" />
-                <element signature="n#account_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#6716#6809#0#PHP" expanded="false" />
                 <element signature="n#account_punts#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#7717#7846#0#PHP" expanded="false" />
-                <element signature="n#post_checkoff#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#9206#9397#0#PHP" expanded="false" />
                 <element signature="e#10177#10341#0#PHP" expanded="false" />
                 <element signature="n#scheduling#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
@@ -75,74 +73,70 @@
                 <element signature="e#17293#17456#0#PHP" expanded="false" />
                 <element signature="n#requested_checkoffs#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#18116#18259#0#PHP" expanded="false" />
-                <element signature="n#checkoff_duty#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#20442#20579#0#PHP" expanded="false" />
-                <element signature="n#punt#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#21697#21795#0#PHP" expanded="false" />
                 <element signature="n#users#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#22124#22615#0#PHP" expanded="false" />
                 <element signature="n#authenticate#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="n#unique_string#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
-                <element signature="e#24666#25335#0#PHP" expanded="false" />
-                <marker date="1472052188000" expanded="true" signature="2314:2391" ph="SELECT id,em... users" />
-                <marker date="1472052188000" expanded="true" signature="2808:2852" ph="INSERT INTO logins... " />
-                <marker date="1472052188000" expanded="true" signature="3254:3288" ph="SELECT role roles" />
-                <marker date="1472052188000" expanded="true" signature="3917:4605" ph="..." />
-                <marker date="1472052188000" expanded="true" signature="5926:6143" ph="SELECT id AS... houseduties" />
-                <marker date="1472052188000" expanded="true" signature="5926:6176" ph="SELECT id AS... houseduties" />
-                <marker date="1472052188000" expanded="true" signature="5964:6027" ph="SELECT title... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="6031:6087" ph="SELECT descr... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="6204:6214" ph="SELECT id FR... " />
-                <marker date="1472052188000" expanded="true" signature="6204:6597" ph="SELECT id AS... " />
-                <marker date="1472052188000" expanded="true" signature="6242:6305" ph="SELECT title... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="6309:6365" ph="SELECT descr... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="6481:6525" ph="SELECT first... users" />
-                <marker date="1472052188000" expanded="true" signature="6885:7105" ph="SELECT times... " />
-                <marker date="1472052188000" expanded="true" signature="7247:7555" ph="SELECT id, F... WHERE" />
-                <marker date="1472052188000" expanded="true" signature="7247:7586" ph="SELECT id, I... " />
-                <marker date="1472052188000" expanded="true" signature="7247:7601" ph="SELECT id, I... " />
-                <marker date="1472052188000" expanded="true" signature="7289:7334" ph="SELECT first... users" />
-                <marker date="1472052188000" expanded="true" signature="7432:7484" ph="SELECT first... users" />
-                <marker date="1472052188000" expanded="true" signature="8297:8394" ph="UPDATE house... " />
-                <marker date="1472052188000" expanded="true" signature="11216:11503" ph="SELECT id as... houseduties" />
-                <marker date="1472052188000" expanded="true" signature="11299:11338" ph="SELECT CONCA... users" />
-                <marker date="1472052188000" expanded="true" signature="11356:11419" ph="SELECT title... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="12061:12107" ph="SELECT title... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="13513:13618" ph="UPDATE house... " />
-                <marker date="1472052188000" expanded="true" signature="14048:14099" ph="UPDATE house... " />
-                <marker date="1472052188000" expanded="true" signature="15712:16188" ph="SELECT id, (... houseduties" />
-                <marker date="1472052188000" expanded="true" signature="15735:15813" ph="SELECT CONCA... users" />
-                <marker date="1472052188000" expanded="true" signature="15817:15880" ph="SELECT title... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="15884:15940" ph="SELECT descr... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="15884:16188" ph="SELECT descr... houseduties" />
-                <marker date="1472052188000" expanded="true" signature="16072:16116" ph="SELECT first... users" />
-                <marker date="1472052188000" expanded="true" signature="16124:16136" ph="SELECT CONCA... users" />
-                <marker date="1472052188000" expanded="true" signature="16685:17085" ph="SELECT id,ti... " />
-                <marker date="1472052188000" expanded="true" signature="16708:16788" ph="SELECT CONCA... users" />
-                <marker date="1472052188000" expanded="true" signature="16811:16856" ph="SELECT first... users" />
-                <marker date="1472052188000" expanded="true" signature="16934:16986" ph="SELECT first... users" />
-                <marker date="1472052188000" expanded="true" signature="17600:17896" ph="SELECT id,(S... houseduties" />
-                <marker date="1472052188000" expanded="true" signature="17622:17696" ph="SELECT CONCA... users" />
-                <marker date="1472052188000" expanded="true" signature="17700:17763" ph="SELECT title... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="17767:17823" ph="SELECT descr... housedutieslkp" />
-                <marker date="1472052188000" expanded="true" signature="19078:19181" ph="UPDATE house... " />
-                <marker date="1472052188000" expanded="true" signature="19225:19321" ph="UPDATE house... " />
-                <marker date="1472052188000" expanded="true" signature="19642:19723" ph="SELECT email... users" />
-                <marker date="1472052188000" expanded="true" signature="19683:19722" ph="SELECT user houseduties" />
-                <marker date="1472052188000" expanded="true" signature="21229:21283" ph="INSERT INTO punts... " />
-                <marker date="1472052188000" expanded="true" signature="21851:21906" ph="SELECT CONCA... users" />
-                <marker date="1472052188000" expanded="true" signature="23728:23769" ph="SELECT passw... users" />
+                <element signature="e#27842#28511#0#PHP" expanded="false" />
+                <marker date="1472705958000" expanded="true" signature="2314:2391" ph="SELECT id,em... users" />
+                <marker date="1472705958000" expanded="true" signature="2808:2852" ph="INSERT INTO logins... " />
+                <marker date="1472705958000" expanded="true" signature="3254:3288" ph="SELECT role roles" />
+                <marker date="1472705958000" expanded="false" signature="3917:4605" ph="..." />
+                <marker date="1472705958000" expanded="true" signature="5926:6143" ph="SELECT id AS... houseduties" />
+                <marker date="1472705958000" expanded="true" signature="5926:6176" ph="SELECT id AS... houseduties" />
+                <marker date="1472705958000" expanded="true" signature="5964:6027" ph="SELECT title... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="6031:6087" ph="SELECT descr... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="6204:6214" ph="SELECT id FR... " />
+                <marker date="1472705958000" expanded="true" signature="6204:6597" ph="SELECT id AS... " />
+                <marker date="1472705958000" expanded="true" signature="6242:6305" ph="SELECT title... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="6309:6365" ph="SELECT descr... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="6481:6525" ph="SELECT first... users" />
+                <marker date="1472705958000" expanded="true" signature="6885:7105" ph="SELECT times... " />
+                <marker date="1472705958000" expanded="true" signature="7247:7555" ph="SELECT id, F... WHERE" />
+                <marker date="1472705958000" expanded="true" signature="7247:7586" ph="SELECT id, I... " />
+                <marker date="1472705958000" expanded="true" signature="7247:7601" ph="SELECT id, I... " />
+                <marker date="1472705958000" expanded="true" signature="7289:7334" ph="SELECT first... users" />
+                <marker date="1472705958000" expanded="true" signature="7432:7484" ph="SELECT first... users" />
+                <marker date="1472705958000" expanded="true" signature="8297:8394" ph="UPDATE house... " />
+                <marker date="1472705958000" expanded="true" signature="11216:11503" ph="SELECT id as... houseduties" />
+                <marker date="1472705958000" expanded="true" signature="11299:11338" ph="SELECT CONCA... users" />
+                <marker date="1472705958000" expanded="true" signature="11356:11419" ph="SELECT title... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="12061:12107" ph="SELECT title... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="13513:13618" ph="UPDATE house... " />
+                <marker date="1472705958000" expanded="true" signature="14048:14099" ph="UPDATE house... " />
+                <marker date="1472705958000" expanded="true" signature="15712:16188" ph="SELECT id, (... houseduties" />
+                <marker date="1472705958000" expanded="true" signature="15735:15813" ph="SELECT CONCA... users" />
+                <marker date="1472705958000" expanded="true" signature="15817:15880" ph="SELECT title... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="15884:15940" ph="SELECT descr... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="15884:16188" ph="SELECT descr... houseduties" />
+                <marker date="1472705958000" expanded="true" signature="16072:16116" ph="SELECT first... users" />
+                <marker date="1472705958000" expanded="true" signature="16124:16136" ph="SELECT CONCA... users" />
+                <marker date="1472705958000" expanded="true" signature="16685:17085" ph="SELECT id,ti... " />
+                <marker date="1472705958000" expanded="true" signature="16708:16788" ph="SELECT CONCA... users" />
+                <marker date="1472705958000" expanded="true" signature="16811:16856" ph="SELECT first... users" />
+                <marker date="1472705958000" expanded="true" signature="16934:16986" ph="SELECT first... users" />
+                <marker date="1472705958000" expanded="true" signature="17600:17896" ph="SELECT id,(S... houseduties" />
+                <marker date="1472705958000" expanded="true" signature="17622:17696" ph="SELECT CONCA... users" />
+                <marker date="1472705958000" expanded="true" signature="17700:17763" ph="SELECT title... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="17767:17823" ph="SELECT descr... housedutieslkp" />
+                <marker date="1472705958000" expanded="true" signature="19078:19181" ph="UPDATE house... " />
+                <marker date="1472705958000" expanded="true" signature="19225:19321" ph="UPDATE house... " />
+                <marker date="1472705958000" expanded="true" signature="19642:19723" ph="SELECT email... users" />
+                <marker date="1472705958000" expanded="true" signature="19683:19722" ph="SELECT user houseduties" />
+                <marker date="1472705958000" expanded="true" signature="21229:21283" ph="INSERT INTO punts... " />
+                <marker date="1472705958000" expanded="true" signature="21851:21906" ph="SELECT CONCA... users" />
+                <marker date="1472705958000" expanded="true" signature="23728:23769" ph="SELECT passw... users" />
+                <marker date="1472705958000" expanded="true" signature="24718:24801" ph="SELECT id as... parties" />
+                <marker date="1472705958000" expanded="true" signature="25205:25262" ph="SELECT guest... invites" />
+                <marker date="1472705958000" expanded="true" signature="25205:25273" ph="SELECT guest... invites" />
+                <marker date="1472705958000" expanded="true" signature="26058:26093" ph="SELECT id FR... guests" />
+                <marker date="1472705958000" expanded="true" signature="26282:26344" ph="INSERT INTO guests... " />
+                <marker date="1472705958000" expanded="true" signature="26431:26466" ph="SELECT id FR... guests" />
+                <marker date="1472705958000" expanded="true" signature="26671:26810" ph="INSERT INTO invites... " />
+                <marker date="1472705958000" expanded="true" signature="27228:27290" ph="SELECT id as... guests" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resource.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/resource.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3150">
-              <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -150,7 +144,7 @@
       <file leaf-file-name="admin_users.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin_users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="15">
               <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
               <folding>
                 <marker date="1469341354000" expanded="true" signature="877:906" ph="DELETE FROM " />
@@ -295,8 +289,9 @@
         <option value="$PROJECT_DIR$/api/.htaccess" />
         <option value="$PROJECT_DIR$/api/User.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/api/DeltsManagerAPI.php" />
         <option value="$PROJECT_DIR$/api/resource.txt" />
+        <option value="$PROJECT_DIR$/api/DeltsManagerAPI.php" />
+        <option value="$PROJECT_DIR$/api/push.php" />
       </list>
     </option>
   </component>
@@ -358,7 +353,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -426,6 +420,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -505,12 +500,14 @@
       <updated>1469342509004</updated>
       <workItem from="1469342510571" duration="38589000" />
       <workItem from="1472048855671" duration="2254000" />
-      <workItem from="1472529405310" duration="277000" />
+      <workItem from="1472529405310" duration="5695000" />
+      <workItem from="1473127665014" duration="643000" />
+      <workItem from="1473623936067" duration="868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82368000" />
+    <option name="totallyTimeSpent" value="89297000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -523,12 +520,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0078125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0078125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -556,46 +553,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/admin_punts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="270:324" ph="INSERT INTO punts... " />
-            <marker date="1469341354000" expanded="true" signature="776:890" ph="UPDATE punts... " />
-            <marker date="1469341354000" expanded="true" signature="1343:1452" ph="UPDATE punts... " />
-            <marker date="1469341354000" expanded="true" signature="1576:1728" ph="SELECT id,ti... " />
-            <marker date="1469341354000" expanded="true" signature="1621:1677" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="1819:1933" ph="SELECT (SELE... " />
-            <marker date="1469341354000" expanded="true" signature="1827:1853" ph="SELECT COUNT... punts" />
-            <marker date="1469341354000" expanded="true" signature="1866:1919" ph="SELECT COUNT... punts" />
-            <marker date="1469341354000" expanded="true" signature="1979:2058" ph="SELECT id,CO... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding>
-            <element signature="e#6#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/APIFramework.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="41" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/google0914c14c73378c5b.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -806,18 +769,15 @@
             <element signature="e#424#454#0#PHP" expanded="false" />
             <element signature="e#538#578#0#PHP" expanded="false" />
             <element signature="e#688#855#0#PHP" expanded="false" />
-            <element signature="n#__construct#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#3764#3917#0#PHP" expanded="false" />
             <element signature="n#account#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#4442#4600#0#PHP" expanded="false" />
             <element signature="n#account_info#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#4654#4936#0#PHP" expanded="false" />
             <element signature="e#4971#5072#0#PHP" expanded="false" />
-            <element signature="n#account_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#6716#6809#0#PHP" expanded="false" />
             <element signature="n#account_punts#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#7717#7846#0#PHP" expanded="false" />
-            <element signature="n#post_checkoff#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#9206#9397#0#PHP" expanded="false" />
             <element signature="e#10177#10341#0#PHP" expanded="false" />
             <element signature="n#scheduling#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
@@ -834,63 +794,69 @@
             <element signature="e#17293#17456#0#PHP" expanded="false" />
             <element signature="n#requested_checkoffs#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#18116#18259#0#PHP" expanded="false" />
-            <element signature="n#checkoff_duty#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#20442#20579#0#PHP" expanded="false" />
-            <element signature="n#punt#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#21697#21795#0#PHP" expanded="false" />
             <element signature="n#users#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#22124#22615#0#PHP" expanded="false" />
             <element signature="n#authenticate#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="n#unique_string#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
-            <element signature="e#24666#25335#0#PHP" expanded="false" />
-            <marker date="1472052188000" expanded="true" signature="2314:2391" ph="SELECT id,em... users" />
-            <marker date="1472052188000" expanded="true" signature="2808:2852" ph="INSERT INTO logins... " />
-            <marker date="1472052188000" expanded="true" signature="3254:3288" ph="SELECT role roles" />
-            <marker date="1472052188000" expanded="true" signature="3917:4605" ph="..." />
-            <marker date="1472052188000" expanded="true" signature="5926:6143" ph="SELECT id AS... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="5926:6176" ph="SELECT id AS... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="5964:6027" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6031:6087" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6204:6214" ph="SELECT id FR... " />
-            <marker date="1472052188000" expanded="true" signature="6204:6597" ph="SELECT id AS... " />
-            <marker date="1472052188000" expanded="true" signature="6242:6305" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6309:6365" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6481:6525" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="6885:7105" ph="SELECT times... " />
-            <marker date="1472052188000" expanded="true" signature="7247:7555" ph="SELECT id, F... WHERE" />
-            <marker date="1472052188000" expanded="true" signature="7247:7586" ph="SELECT id, I... " />
-            <marker date="1472052188000" expanded="true" signature="7247:7601" ph="SELECT id, I... " />
-            <marker date="1472052188000" expanded="true" signature="7289:7334" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="7432:7484" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="8297:8394" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="11216:11503" ph="SELECT id as... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="11299:11338" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="11356:11419" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="12061:12107" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="13513:13618" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="14048:14099" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="15712:16188" ph="SELECT id, (... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="15735:15813" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="15817:15880" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="15884:15940" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="15884:16188" ph="SELECT descr... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="16072:16116" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="16124:16136" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="16685:17085" ph="SELECT id,ti... " />
-            <marker date="1472052188000" expanded="true" signature="16708:16788" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="16811:16856" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="16934:16986" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="17600:17896" ph="SELECT id,(S... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="17622:17696" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="17700:17763" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="17767:17823" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="19078:19181" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="19225:19321" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="19642:19723" ph="SELECT email... users" />
-            <marker date="1472052188000" expanded="true" signature="19683:19722" ph="SELECT user houseduties" />
-            <marker date="1472052188000" expanded="true" signature="21229:21283" ph="INSERT INTO punts... " />
-            <marker date="1472052188000" expanded="true" signature="21851:21906" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="23728:23769" ph="SELECT passw... users" />
+            <element signature="e#27842#28511#0#PHP" expanded="false" />
+            <marker date="1472705958000" expanded="true" signature="2314:2391" ph="SELECT id,em... users" />
+            <marker date="1472705958000" expanded="true" signature="2808:2852" ph="INSERT INTO logins... " />
+            <marker date="1472705958000" expanded="true" signature="3254:3288" ph="SELECT role roles" />
+            <marker date="1472705958000" expanded="false" signature="3917:4605" ph="..." />
+            <marker date="1472705958000" expanded="true" signature="5926:6143" ph="SELECT id AS... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="5926:6176" ph="SELECT id AS... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="5964:6027" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6031:6087" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6204:6214" ph="SELECT id FR... " />
+            <marker date="1472705958000" expanded="true" signature="6204:6597" ph="SELECT id AS... " />
+            <marker date="1472705958000" expanded="true" signature="6242:6305" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6309:6365" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6481:6525" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="6885:7105" ph="SELECT times... " />
+            <marker date="1472705958000" expanded="true" signature="7247:7555" ph="SELECT id, F... WHERE" />
+            <marker date="1472705958000" expanded="true" signature="7247:7586" ph="SELECT id, I... " />
+            <marker date="1472705958000" expanded="true" signature="7247:7601" ph="SELECT id, I... " />
+            <marker date="1472705958000" expanded="true" signature="7289:7334" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="7432:7484" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="8297:8394" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="11216:11503" ph="SELECT id as... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="11299:11338" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="11356:11419" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="12061:12107" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="13513:13618" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="14048:14099" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="15712:16188" ph="SELECT id, (... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="15735:15813" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="15817:15880" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="15884:15940" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="15884:16188" ph="SELECT descr... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="16072:16116" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="16124:16136" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="16685:17085" ph="SELECT id,ti... " />
+            <marker date="1472705958000" expanded="true" signature="16708:16788" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="16811:16856" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="16934:16986" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="17600:17896" ph="SELECT id,(S... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="17622:17696" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="17700:17763" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="17767:17823" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="19078:19181" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="19225:19321" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="19642:19723" ph="SELECT email... users" />
+            <marker date="1472705958000" expanded="true" signature="19683:19722" ph="SELECT user houseduties" />
+            <marker date="1472705958000" expanded="true" signature="21229:21283" ph="INSERT INTO punts... " />
+            <marker date="1472705958000" expanded="true" signature="21851:21906" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="23728:23769" ph="SELECT passw... users" />
+            <marker date="1472705958000" expanded="true" signature="24718:24801" ph="SELECT id as... parties" />
+            <marker date="1472705958000" expanded="true" signature="25205:25262" ph="SELECT guest... invites" />
+            <marker date="1472705958000" expanded="true" signature="25205:25273" ph="SELECT guest... invites" />
+            <marker date="1472705958000" expanded="true" signature="26058:26093" ph="SELECT id FR... guests" />
+            <marker date="1472705958000" expanded="true" signature="26282:26344" ph="INSERT INTO guests... " />
+            <marker date="1472705958000" expanded="true" signature="26431:26466" ph="SELECT id FR... guests" />
+            <marker date="1472705958000" expanded="true" signature="26671:26810" ph="INSERT INTO invites... " />
+            <marker date="1472705958000" expanded="true" signature="27228:27290" ph="SELECT id as... guests" />
           </folding>
         </state>
       </provider>
@@ -1007,6 +973,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/resource.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3150">
+          <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/houseduties.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="40" />
+          <folding>
+            <marker date="1469341354000" expanded="true" signature="615:720" ph="UPDATE house... " />
+            <marker date="1469341354000" expanded="true" signature="1313:1364" ph="UPDATE house... " />
+            <marker date="1469341354000" expanded="true" signature="1895:1942" ph="SELECT id,ti... housedutieslkp" />
+            <marker date="1469341354000" expanded="true" signature="2070:2301" ph="SELECT id,(D... houseduties" />
+            <marker date="1469341354000" expanded="true" signature="2143:2199" ph="SELECT CONCA... users" />
+            <marker date="1469341354000" expanded="true" signature="6068:6078" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
@@ -1018,24 +1015,6 @@
             <marker date="1469341354000" expanded="true" signature="2565:2625" ph="SELECT CONCA... users" />
             <marker date="1469341354000" expanded="true" signature="6032:6149" ph="SELECT COUNT... houseduties" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding>
-            <element signature="e#6#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/APIFramework.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="41" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,29 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/houseduties.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="40" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="615:720" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1313:1364" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1895:1942" ph="SELECT id,ti... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2070:2301" ph="SELECT id,(D... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="2143:2199" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="6068:6078" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/admin_punts.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1104,9 +1060,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin_users.php">
+    <entry file="file://$PROJECT_DIR$/api/api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding>
+            <element signature="e#6#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/APIFramework.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="41" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/_superglobals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/ck.pem">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/push.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding>
+            <element signature="e#6#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin_users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
           <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
           <folding>
             <marker date="1469341354000" expanded="true" signature="877:906" ph="DELETE FROM " />
@@ -1123,35 +1123,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/resource.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="343" column="14" selection-start-line="343" selection-start-column="14" selection-end-line="343" selection-end-column="14" />
+        <state relative-caret-position="417">
+          <caret line="780" column="23" selection-start-line="780" selection-start-column="23" selection-end-line="780" selection-end-column="23" />
           <folding>
             <element signature="e#255#318#0#PHP" expanded="false" />
             <element signature="e#424#454#0#PHP" expanded="false" />
             <element signature="e#538#578#0#PHP" expanded="false" />
             <element signature="e#688#855#0#PHP" expanded="false" />
-            <element signature="n#__construct#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#3764#3917#0#PHP" expanded="false" />
             <element signature="n#account#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#4442#4600#0#PHP" expanded="false" />
             <element signature="n#account_info#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#4654#4936#0#PHP" expanded="false" />
             <element signature="e#4971#5072#0#PHP" expanded="false" />
-            <element signature="n#account_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#6716#6809#0#PHP" expanded="false" />
             <element signature="n#account_punts#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#7717#7846#0#PHP" expanded="false" />
-            <element signature="n#post_checkoff#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#9206#9397#0#PHP" expanded="false" />
             <element signature="e#10177#10341#0#PHP" expanded="false" />
             <element signature="n#scheduling#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
@@ -1168,63 +1157,69 @@
             <element signature="e#17293#17456#0#PHP" expanded="false" />
             <element signature="n#requested_checkoffs#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#18116#18259#0#PHP" expanded="false" />
-            <element signature="n#checkoff_duty#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#20442#20579#0#PHP" expanded="false" />
-            <element signature="n#punt#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#21697#21795#0#PHP" expanded="false" />
             <element signature="n#users#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#22124#22615#0#PHP" expanded="false" />
             <element signature="n#authenticate#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="n#unique_string#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
-            <element signature="e#24666#25335#0#PHP" expanded="false" />
-            <marker date="1472052188000" expanded="true" signature="2314:2391" ph="SELECT id,em... users" />
-            <marker date="1472052188000" expanded="true" signature="2808:2852" ph="INSERT INTO logins... " />
-            <marker date="1472052188000" expanded="true" signature="3254:3288" ph="SELECT role roles" />
-            <marker date="1472052188000" expanded="true" signature="3917:4605" ph="..." />
-            <marker date="1472052188000" expanded="true" signature="5926:6143" ph="SELECT id AS... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="5926:6176" ph="SELECT id AS... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="5964:6027" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6031:6087" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6204:6214" ph="SELECT id FR... " />
-            <marker date="1472052188000" expanded="true" signature="6204:6597" ph="SELECT id AS... " />
-            <marker date="1472052188000" expanded="true" signature="6242:6305" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6309:6365" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="6481:6525" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="6885:7105" ph="SELECT times... " />
-            <marker date="1472052188000" expanded="true" signature="7247:7555" ph="SELECT id, F... WHERE" />
-            <marker date="1472052188000" expanded="true" signature="7247:7586" ph="SELECT id, I... " />
-            <marker date="1472052188000" expanded="true" signature="7247:7601" ph="SELECT id, I... " />
-            <marker date="1472052188000" expanded="true" signature="7289:7334" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="7432:7484" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="8297:8394" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="11216:11503" ph="SELECT id as... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="11299:11338" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="11356:11419" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="12061:12107" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="13513:13618" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="14048:14099" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="15712:16188" ph="SELECT id, (... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="15735:15813" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="15817:15880" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="15884:15940" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="15884:16188" ph="SELECT descr... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="16072:16116" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="16124:16136" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="16685:17085" ph="SELECT id,ti... " />
-            <marker date="1472052188000" expanded="true" signature="16708:16788" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="16811:16856" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="16934:16986" ph="SELECT first... users" />
-            <marker date="1472052188000" expanded="true" signature="17600:17896" ph="SELECT id,(S... houseduties" />
-            <marker date="1472052188000" expanded="true" signature="17622:17696" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="17700:17763" ph="SELECT title... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="17767:17823" ph="SELECT descr... housedutieslkp" />
-            <marker date="1472052188000" expanded="true" signature="19078:19181" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="19225:19321" ph="UPDATE house... " />
-            <marker date="1472052188000" expanded="true" signature="19642:19723" ph="SELECT email... users" />
-            <marker date="1472052188000" expanded="true" signature="19683:19722" ph="SELECT user houseduties" />
-            <marker date="1472052188000" expanded="true" signature="21229:21283" ph="INSERT INTO punts... " />
-            <marker date="1472052188000" expanded="true" signature="21851:21906" ph="SELECT CONCA... users" />
-            <marker date="1472052188000" expanded="true" signature="23728:23769" ph="SELECT passw... users" />
+            <element signature="e#27842#28511#0#PHP" expanded="false" />
+            <marker date="1472705958000" expanded="true" signature="2314:2391" ph="SELECT id,em... users" />
+            <marker date="1472705958000" expanded="true" signature="2808:2852" ph="INSERT INTO logins... " />
+            <marker date="1472705958000" expanded="true" signature="3254:3288" ph="SELECT role roles" />
+            <marker date="1472705958000" expanded="false" signature="3917:4605" ph="..." />
+            <marker date="1472705958000" expanded="true" signature="5926:6143" ph="SELECT id AS... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="5926:6176" ph="SELECT id AS... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="5964:6027" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6031:6087" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6204:6214" ph="SELECT id FR... " />
+            <marker date="1472705958000" expanded="true" signature="6204:6597" ph="SELECT id AS... " />
+            <marker date="1472705958000" expanded="true" signature="6242:6305" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6309:6365" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="6481:6525" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="6885:7105" ph="SELECT times... " />
+            <marker date="1472705958000" expanded="true" signature="7247:7555" ph="SELECT id, F... WHERE" />
+            <marker date="1472705958000" expanded="true" signature="7247:7586" ph="SELECT id, I... " />
+            <marker date="1472705958000" expanded="true" signature="7247:7601" ph="SELECT id, I... " />
+            <marker date="1472705958000" expanded="true" signature="7289:7334" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="7432:7484" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="8297:8394" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="11216:11503" ph="SELECT id as... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="11299:11338" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="11356:11419" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="12061:12107" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="13513:13618" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="14048:14099" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="15712:16188" ph="SELECT id, (... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="15735:15813" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="15817:15880" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="15884:15940" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="15884:16188" ph="SELECT descr... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="16072:16116" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="16124:16136" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="16685:17085" ph="SELECT id,ti... " />
+            <marker date="1472705958000" expanded="true" signature="16708:16788" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="16811:16856" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="16934:16986" ph="SELECT first... users" />
+            <marker date="1472705958000" expanded="true" signature="17600:17896" ph="SELECT id,(S... houseduties" />
+            <marker date="1472705958000" expanded="true" signature="17622:17696" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="17700:17763" ph="SELECT title... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="17767:17823" ph="SELECT descr... housedutieslkp" />
+            <marker date="1472705958000" expanded="true" signature="19078:19181" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="19225:19321" ph="UPDATE house... " />
+            <marker date="1472705958000" expanded="true" signature="19642:19723" ph="SELECT email... users" />
+            <marker date="1472705958000" expanded="true" signature="19683:19722" ph="SELECT user houseduties" />
+            <marker date="1472705958000" expanded="true" signature="21229:21283" ph="INSERT INTO punts... " />
+            <marker date="1472705958000" expanded="true" signature="21851:21906" ph="SELECT CONCA... users" />
+            <marker date="1472705958000" expanded="true" signature="23728:23769" ph="SELECT passw... users" />
+            <marker date="1472705958000" expanded="true" signature="24718:24801" ph="SELECT id as... parties" />
+            <marker date="1472705958000" expanded="true" signature="25205:25262" ph="SELECT guest... invites" />
+            <marker date="1472705958000" expanded="true" signature="25205:25273" ph="SELECT guest... invites" />
+            <marker date="1472705958000" expanded="true" signature="26058:26093" ph="SELECT id FR... guests" />
+            <marker date="1472705958000" expanded="true" signature="26282:26344" ph="INSERT INTO guests... " />
+            <marker date="1472705958000" expanded="true" signature="26431:26466" ph="SELECT id FR... guests" />
+            <marker date="1472705958000" expanded="true" signature="26671:26810" ph="INSERT INTO invites... " />
+            <marker date="1472705958000" expanded="true" signature="27228:27290" ph="SELECT id as... guests" />
           </folding>
         </state>
       </provider>

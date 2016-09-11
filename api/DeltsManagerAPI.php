@@ -676,6 +676,113 @@ class DeltsManagerAPI extends APIFramework
 
 
     //-------------------
+    // PARTY FUNCTIONS  |
+    //-------------------
+
+    protected function party() {
+        switch ($this->verb) {
+            case 'parties':
+                break;
+            case 'invites':
+                break;
+            case 'update_invite':
+                break;
+            case 'update_party':
+                break;
+            case 'new_party':
+                break;
+
+        }
+    }
+
+    private function parties() {
+        $parties_query = "SELECT id as party_id, title as party_name, start as date, description FROM parties";
+        $parties = $this->mysqli->query($parties_query)->fetch_all(MYSQLI_ASSOC);
+
+        return $parties;
+    }
+
+    private function invites() {
+        $json_data = json_decode($this->file);
+
+        if (array_key_exists('party_id', $json_data)) {
+            $party_id = $json_data['party_id'];
+        } else {
+            throw new Exception('No party id');
+        }
+
+        $invite_query = "SELECT guest, user, signin_time from invites WHERE party={$party_id}";
+        $invites = $this->mysqli->query($invite_query)->fetch_all(MYSQLI_ASSOC);
+
+        return $invites;
+    }
+
+    private function new_invite()
+    {
+        $json_data = json_decode($this->file);
+
+        if (array_key_exists('party_id', $json_data)) {
+            $party_id = $json_data['party_id'];
+        } else {
+            throw new Exception('No party id');
+        }
+
+        if (array_key_exists('invite_name', $json_data)) {
+            $invite_name = $json_data['invite_name'];
+        } else {
+            throw new Exception('No invite name');
+        }
+
+        if (array_key_exists('signin_time', $json_data)) {
+            $signin = $json_data['signin_time'];
+        } else {
+            $signin = "0000-00-00 00:00:00";
+        }
+
+        $guest_id_query = "SELECT id FROM guests WHERE name = {$invite_name}";
+        $temp_guest_id = $this->mysqli->query($guest_id_query)->fetch_all(MYSQLI_ASSOC);
+
+        if(mysql_num_rows($temp_guest_id) == 0) {
+            $new_guest_query = "INSERT INTO guests (name, comment) VALUES ({$invite_name}, '')";
+            $this->mysqli->query($new_guest_query);
+
+            $guest_id_query = "SELECT id FROM guests WHERE name = {$invite_name}";
+            $guest_id = $this->mysqli->query($guest_id_query)->fetch_all(MYSQLI_ASSOC);
+        } else {
+            $guest_id = $temp_guest_id[0];
+        }
+
+        $new_invite_query = "INSERT INTO invites (guest, user, party, add_time, signin_time) VALUES ({$guest_id}, {$this->User->user_id}, {$party_id}, now(), {$signin})";
+        $stmt = $this->mysqli->query($new_invite_query);
+
+        if (mysqli_affected_rows($this->mysqli) > 0) {
+            return '';
+        } else {
+            throw new Exception('DB error');
+        }
+
+    }
+
+    private function update_party() {
+
+    }
+
+    private function new_party() {
+
+    }
+
+    /**
+     * @return array Array of guests
+     */
+    private function guests() {
+        $guests_query = "SELECT id as guest_id, name as guest_name, comment FROM guests";
+        $guests = $this->mysqli->query($guests_query)->fetch_all(MYSQLI_ASSOC);
+
+        return $guests;
+    }
+
+
+    //-------------------
     // HELPER FUNCTIONS |
     //-------------------
 
