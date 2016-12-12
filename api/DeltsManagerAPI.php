@@ -230,6 +230,9 @@ class DeltsManagerAPI extends APIFramework
             send_email($this->User->user_email,"Checkoff Requested","{$this->User->user_full_name},\r\n\r\nYou just requested a checkoff for a duty.\r\n\r\nCheers,\r\nDM");
             send_email("dtd-checkers@mit.edu","Checkoff Requested","Checkers,\r\n\r\n{$this->User->user_full_name} just requested a checkoff. Visit http://".BASE_URL."/checker_dashboard.php to give them a checkoff.\r\n\r\nCheers,\r\nDM");
 
+            // SEND NOTIFICATION
+            //shell_exec("php push.php {$duty_id} {$php_errormsg}");
+
             return array(
                 'status' => 1
             );
@@ -682,16 +685,15 @@ class DeltsManagerAPI extends APIFramework
     protected function party() {
         switch ($this->verb) {
             case 'parties':
-                break;
+                return $this->parties();
             case 'invites':
-                break;
+                return $this->invites();
             case 'update_invite':
-                break;
+                return $this->new_invite();
             case 'update_party':
-                break;
+                return $this->update_party();
             case 'new_party':
-                break;
-
+                return $this->new_party();
         }
     }
 
@@ -753,7 +755,7 @@ class DeltsManagerAPI extends APIFramework
         }
 
         $new_invite_query = "INSERT INTO invites (guest, user, party, add_time, signin_time) VALUES ({$guest_id}, {$this->User->user_id}, {$party_id}, now(), {$signin})";
-        $stmt = $this->mysqli->query($new_invite_query);
+        $this->mysqli->query($new_invite_query);
 
         if (mysqli_affected_rows($this->mysqli) > 0) {
             return '';
