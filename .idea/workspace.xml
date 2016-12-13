@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df810d89-abbe-4b00-8cd1-dc54d029e6ba" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/api/.htaccess" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/DeltsManagerAPI.php" afterPath="$PROJECT_DIR$/api/DeltsManagerAPI.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/includes/.htaccess" afterPath="$PROJECT_DIR$/public/includes/.htaccess" />
     </list>
     <ignored path="dtd-manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DeltsManagerAPI.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeltsManagerAPI.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="237" column="14" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
+            <state relative-caret-position="1530">
+              <caret line="433" column="7" selection-start-line="433" selection-start-column="7" selection-end-line="433" selection-end-column="7" />
               <folding>
                 <element signature="e#255#318#0#PHP" expanded="false" />
                 <element signature="e#424#454#0#PHP" expanded="false" />
@@ -125,7 +126,6 @@
                 <element signature="e#15331#15381#0#PHP" expanded="false" />
                 <element signature="e#15394#15446#0#PHP" expanded="false" />
                 <element signature="e#15459#15522#0#PHP" expanded="false" />
-                <element signature="e#15544#15693#0#PHP" expanded="false" />
                 <element signature="n#manager_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#15742#16490#0#PHP" expanded="false" />
                 <element signature="e#16418#16490#0#PHP" expanded="false" />
@@ -262,6 +262,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/includes/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ck.pem" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/ck.pem">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="APIKeyFactory.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/APIKeyFactory.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -290,16 +310,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="api.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/api.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -312,11 +322,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="push.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/push.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/User.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
               <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resource.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/resource.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3150">
+              <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -384,6 +414,7 @@
         <option value="$PROJECT_DIR$/api/push.php" />
         <option value="$PROJECT_DIR$/api/APIKeyFactory.php" />
         <option value="$PROJECT_DIR$/api/DeltsManagerAPI.php" />
+        <option value="$PROJECT_DIR$/public/includes/.htaccess" />
       </list>
     </option>
   </component>
@@ -445,8 +476,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -479,40 +508,10 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dtd-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dtd-manager" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dtd-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dtd-manager" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -522,6 +521,11 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
   </component>
   <component name="RunManager" selected="PHP Script.test">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -597,12 +601,13 @@
       <workItem from="1473623936067" duration="2480000" />
       <workItem from="1473786446650" duration="615000" />
       <workItem from="1479761021163" duration="980000" />
-      <workItem from="1481507083541" duration="1346000" />
+      <workItem from="1481507083541" duration="1625000" />
+      <workItem from="1481663350887" duration="257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93850000" />
+    <option name="totallyTimeSpent" value="94386000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -621,6 +626,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0078125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -631,7 +637,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09561753" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -679,23 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="245:348" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="473:553" ph="SELECT email... " />
-            <marker date="1469341354000" expanded="true" signature="513:552" ph="SELECT user houseduties" />
-            <marker date="1469341354000" expanded="true" signature="1247:1329" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1366:1446" ph="SELECT email... " />
-            <marker date="1469341354000" expanded="true" signature="1406:1445" ph="SELECT user houseduties" />
-            <marker date="1469341354000" expanded="true" signature="1897:2074" ph="SELECT id,(S... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="1908:1964" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="1975:2023" ph="SELECT title... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2364:2579" ph="SELECT id,(S... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="2375:2431" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="2442:2490" ph="SELECT title... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2683:2762" ph="SELECT id,CO... users" />
-            <marker date="1469341354000" expanded="true" signature="7540:7736" ph="SELECT id,CO... users" />
-            <marker date="1469341354000" expanded="true" signature="7582:7688" ph="SELECT COUNT... houseduties" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -717,18 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="113" column="27" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="877:906" ph="DELETE FROM " />
-            <marker date="1469341354000" expanded="true" signature="928:963" ph="INSERT INTO roles... " />
-            <marker date="1469341354000" expanded="true" signature="1633:1676" ph="UPDATE users... " />
-            <marker date="1469341354000" expanded="true" signature="1927:2186" ph="SELECT id,fi... " />
-            <marker date="1469341354000" expanded="true" signature="2000:2107" ph="SELECT GROUP... roleslkp" />
-            <marker date="1469341354000" expanded="true" signature="2068:2106" ph="SELECT role roles" />
-            <marker date="1469341354000" expanded="true" signature="4077:4693" ph="..." />
-            <marker date="1469341354000" expanded="true" signature="4221:4688" ph="..." />
-            <marker date="1469341354000" expanded="true" signature="4252:4677" ph="..." />
-            <marker date="1469341354000" expanded="true" signature="4436:4665" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,17 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1065">
           <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="270:324" ph="INSERT INTO punts... " />
-            <marker date="1469341354000" expanded="true" signature="776:890" ph="UPDATE punts... " />
-            <marker date="1469341354000" expanded="true" signature="1343:1452" ph="UPDATE punts... " />
-            <marker date="1469341354000" expanded="true" signature="1576:1728" ph="SELECT id,ti... " />
-            <marker date="1469341354000" expanded="true" signature="1621:1677" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="1819:1933" ph="SELECT (SELE... " />
-            <marker date="1469341354000" expanded="true" signature="1827:1853" ph="SELECT COUNT... punts" />
-            <marker date="1469341354000" expanded="true" signature="1866:1919" ph="SELECT COUNT... punts" />
-            <marker date="1469341354000" expanded="true" signature="1979:2058" ph="SELECT id,CO... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -762,13 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="43" column="85" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="349:387" ph="UPDATE users... " />
-            <marker date="1469341354000" expanded="true" signature="1178:1275" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="2507:2715" ph="SELECT times... " />
-            <marker date="1469341354000" expanded="true" signature="2565:2625" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="6032:6149" ph="SELECT COUNT... houseduties" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,14 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="615:720" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1313:1364" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1895:1942" ph="SELECT id,ti... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2070:2301" ph="SELECT id,(D... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="2143:2199" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="6068:6078" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,7 +935,6 @@
             <element signature="e#15331#15381#0#PHP" expanded="false" />
             <element signature="e#15394#15446#0#PHP" expanded="false" />
             <element signature="e#15459#15522#0#PHP" expanded="false" />
-            <element signature="e#15544#15693#0#PHP" expanded="false" />
             <element signature="n#manager_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#15742#16490#0#PHP" expanded="false" />
             <element signature="e#16418#16490#0#PHP" expanded="false" />
@@ -1156,13 +1105,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/includes/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/api_functions.php" />
     <entry file="file://$PROJECT_DIR$/public/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1236,14 +1178,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="40" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="615:720" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1313:1364" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1895:1942" ph="SELECT id,ti... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2070:2301" ph="SELECT id,(D... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="2143:2199" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="6068:6078" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1251,23 +1185,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="245:348" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="473:553" ph="SELECT email... " />
-            <marker date="1469341354000" expanded="true" signature="513:552" ph="SELECT user houseduties" />
-            <marker date="1469341354000" expanded="true" signature="1247:1329" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="1366:1446" ph="SELECT email... " />
-            <marker date="1469341354000" expanded="true" signature="1406:1445" ph="SELECT user houseduties" />
-            <marker date="1469341354000" expanded="true" signature="1897:2074" ph="SELECT id,(S... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="1908:1964" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="1975:2023" ph="SELECT title... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2364:2579" ph="SELECT id,(S... houseduties" />
-            <marker date="1469341354000" expanded="true" signature="2375:2431" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="2442:2490" ph="SELECT title... housedutieslkp" />
-            <marker date="1469341354000" expanded="true" signature="2683:2762" ph="SELECT id,CO... users" />
-            <marker date="1469341354000" expanded="true" signature="7540:7736" ph="SELECT id,CO... users" />
-            <marker date="1469341354000" expanded="true" signature="7582:7688" ph="SELECT COUNT... houseduties" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1275,17 +1192,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="270:324" ph="INSERT INTO punts... " />
-            <marker date="1469341354000" expanded="true" signature="776:890" ph="UPDATE punts... " />
-            <marker date="1469341354000" expanded="true" signature="1343:1452" ph="UPDATE punts... " />
-            <marker date="1469341354000" expanded="true" signature="1576:1728" ph="SELECT id,ti... " />
-            <marker date="1469341354000" expanded="true" signature="1621:1677" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="1819:1933" ph="SELECT (SELE... " />
-            <marker date="1469341354000" expanded="true" signature="1827:1853" ph="SELECT COUNT... punts" />
-            <marker date="1469341354000" expanded="true" signature="1866:1919" ph="SELECT COUNT... punts" />
-            <marker date="1469341354000" expanded="true" signature="1979:2058" ph="SELECT id,CO... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1293,18 +1199,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="877:906" ph="DELETE FROM " />
-            <marker date="1469341354000" expanded="true" signature="928:963" ph="INSERT INTO roles... " />
-            <marker date="1469341354000" expanded="true" signature="1633:1676" ph="UPDATE users... " />
-            <marker date="1469341354000" expanded="true" signature="1927:2186" ph="SELECT id,fi... " />
-            <marker date="1469341354000" expanded="true" signature="2000:2107" ph="SELECT GROUP... roleslkp" />
-            <marker date="1469341354000" expanded="true" signature="2068:2106" ph="SELECT role roles" />
-            <marker date="1469341354000" expanded="true" signature="4077:4693" ph="..." />
-            <marker date="1469341354000" expanded="true" signature="4221:4688" ph="..." />
-            <marker date="1469341354000" expanded="true" signature="4252:4677" ph="..." />
-            <marker date="1469341354000" expanded="true" signature="4436:4665" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1312,20 +1206,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="76" column="107" selection-start-line="76" selection-start-column="105" selection-end-line="76" selection-end-column="107" />
-          <folding>
-            <marker date="1469341354000" expanded="true" signature="349:387" ph="UPDATE users... " />
-            <marker date="1469341354000" expanded="true" signature="1178:1275" ph="UPDATE house... " />
-            <marker date="1469341354000" expanded="true" signature="2507:2715" ph="SELECT times... " />
-            <marker date="1469341354000" expanded="true" signature="2565:2625" ph="SELECT CONCA... users" />
-            <marker date="1469341354000" expanded="true" signature="6032:6149" ph="SELECT COUNT... houseduties" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        <state relative-caret-position="15">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/ck.pem">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1337,6 +1232,30 @@
           <folding>
             <element signature="e#6#92#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/push.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/resource.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3150">
+          <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1407,42 +1326,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/push.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/resource.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/ck.pem">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="237" column="14" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
+        <state relative-caret-position="1530">
+          <caret line="433" column="7" selection-start-line="433" selection-start-column="7" selection-end-line="433" selection-end-column="7" />
           <folding>
             <element signature="e#255#318#0#PHP" expanded="false" />
             <element signature="e#424#454#0#PHP" expanded="false" />
@@ -1525,7 +1412,6 @@
             <element signature="e#15331#15381#0#PHP" expanded="false" />
             <element signature="e#15394#15446#0#PHP" expanded="false" />
             <element signature="e#15459#15522#0#PHP" expanded="false" />
-            <element signature="e#15544#15693#0#PHP" expanded="false" />
             <element signature="n#manager_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#15742#16490#0#PHP" expanded="false" />
             <element signature="e#16418#16490#0#PHP" expanded="false" />
@@ -1658,6 +1544,14 @@
             <marker date="1473643686000" expanded="false" signature="26873:27012" ph="INSERT INTO invites... " />
             <marker date="1473643686000" expanded="false" signature="27422:27484" ph="SELECT id as... guests" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/includes/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

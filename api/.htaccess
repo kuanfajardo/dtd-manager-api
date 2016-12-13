@@ -1,8 +1,0 @@
-# TODO: To be later included in main .htaccess file
-# New rule - if file / directory doesn't exist, execute api.php
-<IfModule mod rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule api/v1/(.*)$ api/api.php?request=$1 [QSA,NC,L]
-</IfModule>
