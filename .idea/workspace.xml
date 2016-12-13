@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df810d89-abbe-4b00-8cd1-dc54d029e6ba" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/.htaccess" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/includes/.htaccess" afterPath="$PROJECT_DIR$/public/includes/.htaccess" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/APIFramework.php" afterPath="$PROJECT_DIR$/public/api/APIFramework.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/APIKeyFactory.php" afterPath="$PROJECT_DIR$/public/api/APIKeyFactory.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/DeltsManagerAPI.php" afterPath="$PROJECT_DIR$/public/api/DeltsManagerAPI.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/User.php" afterPath="$PROJECT_DIR$/public/api/User.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/api.php" afterPath="$PROJECT_DIR$/public/api/api.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/ck.pem" afterPath="$PROJECT_DIR$/public/api/ck.pem" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/push.php" afterPath="$PROJECT_DIR$/public/api/push.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/api/resource.txt" afterPath="$PROJECT_DIR$/public/api/resource.txt" />
     </list>
     <ignored path="dtd-manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +44,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DeltsManagerAPI.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
+      <file leaf-file-name="api.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/api/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="433" column="7" selection-start-line="433" selection-start-column="7" selection-end-line="433" selection-end-column="7" />
+            <state relative-caret-position="360">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#92#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APIFramework.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/api/APIFramework.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="102" column="53" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="53" />
+              <folding>
+                <element signature="e#39#126#0#PHP" expanded="false" />
+                <element signature="e#161#257#0#PHP" expanded="false" />
+                <element signature="e#291#364#0#PHP" expanded="false" />
+                <element signature="e#400#572#0#PHP" expanded="false" />
+                <element signature="e#604#828#0#PHP" expanded="false" />
+                <element signature="e#865#936#0#PHP" expanded="false" />
+                <element signature="e#970#1151#0#PHP" expanded="false" />
+                <element signature="n#__construct#0;n#APIFramework#0;n#!!top" expanded="false" />
+                <element signature="e#1644#1776#0#PHP" expanded="false" />
+                <element signature="e#1912#2388#0#PHP" expanded="false" />
+                <element signature="e#2007#2378#0#PHP" expanded="false" />
+                <element signature="e#2065#2152#0#PHP" expanded="false" />
+                <element signature="e#2169#2250#0#PHP" expanded="false" />
+                <element signature="e#2267#2364#0#PHP" expanded="false" />
+                <element signature="e#2453#3069#0#PHP" expanded="false" />
+                <element signature="e#2517#2678#0#PHP" expanded="false" />
+                <element signature="e#2691#2786#0#PHP" expanded="false" />
+                <element signature="e#2799#2958#0#PHP" expanded="false" />
+                <element signature="e#2971#3059#0#PHP" expanded="false" />
+                <element signature="n#processAPI#0;n#APIFramework#0;n#!!top" expanded="false" />
+                <element signature="e#3258#3376#0#PHP" expanded="false" />
+                <element signature="e#3459#3598#0#PHP" expanded="false" />
+                <element signature="n#_cleanInputs#0;n#APIFramework#0;n#!!top" expanded="false" />
+                <element signature="e#3682#3899#0#PHP" expanded="false" />
+                <element signature="e#3717#3820#0#PHP" expanded="false" />
+                <element signature="e#3831#3899#0#PHP" expanded="false" />
+                <element signature="e#3941#4197#0#PHP" expanded="false" />
+                <element signature="n#_response#0;n#APIFramework#0;n#!!top" expanded="false" />
+                <element signature="e#4377#4562#0#PHP" expanded="false" />
+                <element signature="n#_requestStatus#0;n#APIFramework#0;n#!!top" expanded="false" />
+                <element signature="e#4626#4783#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APIKeyFactory.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/api/APIKeyFactory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="84" column="50" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="50" />
+              <folding>
+                <element signature="e#146#274#0#PHP" expanded="false" />
+                <element signature="e#279#453#0#PHP" expanded="false" />
+                <element signature="e#352#424#0#PHP" expanded="false" />
+                <element signature="e#459#645#0#PHP" expanded="false" />
+                <element signature="e#650#688#0#PHP" expanded="false" />
+                <element signature="e#694#831#0#PHP" expanded="false" />
+                <element signature="e#836#870#0#PHP" expanded="false" />
+                <element signature="e#876#1009#0#PHP" expanded="false" />
+                <element signature="e#1014#1049#0#PHP" expanded="false" />
+                <element signature="e#1055#1263#0#PHP" expanded="false" />
+                <element signature="e#1268#1440#0#PHP" expanded="false" />
+                <element signature="e#1327#1411#0#PHP" expanded="false" />
+                <element signature="e#1446#1585#0#PHP" expanded="false" />
+                <element signature="e#1590#1726#0#PHP" expanded="false" />
+                <element signature="e#2202#2514#0#PHP" expanded="false" />
+                <element signature="e#2391#2487#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeltsManagerAPI.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/api/DeltsManagerAPI.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="190" column="27" selection-start-line="190" selection-start-column="26" selection-end-line="190" selection-end-column="27" />
               <folding>
                 <element signature="e#255#318#0#PHP" expanded="false" />
                 <element signature="e#424#454#0#PHP" expanded="false" />
@@ -74,7 +160,6 @@
                 <element signature="e#4971#5072#0#PHP" expanded="false" />
                 <element signature="n#account_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#5157#5897#0#PHP" expanded="false" />
-                <element signature="e#6716#6809#0#PHP" expanded="false" />
                 <element signature="n#account_punts#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
                 <element signature="e#6857#7221#0#PHP" expanded="false" />
                 <element signature="e#7717#7846#0#PHP" expanded="false" />
@@ -262,68 +347,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/includes/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ck.pem" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/ck.pem">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="APIKeyFactory.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/APIKeyFactory.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="e#146#274#0#PHP" expanded="false" />
-                <element signature="e#279#453#0#PHP" expanded="false" />
-                <element signature="e#352#424#0#PHP" expanded="false" />
-                <element signature="e#459#645#0#PHP" expanded="false" />
-                <element signature="e#650#688#0#PHP" expanded="false" />
-                <element signature="e#694#831#0#PHP" expanded="false" />
-                <element signature="e#836#870#0#PHP" expanded="false" />
-                <element signature="e#876#1009#0#PHP" expanded="false" />
-                <element signature="e#1014#1049#0#PHP" expanded="false" />
-                <element signature="e#1055#1263#0#PHP" expanded="false" />
-                <element signature="e#1268#1440#0#PHP" expanded="false" />
-                <element signature="e#1327#1411#0#PHP" expanded="false" />
-                <element signature="e#1446#1585#0#PHP" expanded="false" />
-                <element signature="e#1590#1726#0#PHP" expanded="false" />
-                <element signature="e#1732#2197#0#PHP" expanded="false" />
-                <element signature="e#2202#2514#0#PHP" expanded="false" />
-                <element signature="e#2391#2487#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="api.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-              <folding>
-                <element signature="e#6#92#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="push.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/push.php">
+        <entry file="file://$PROJECT_DIR$/public/api/push.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
@@ -332,65 +357,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="resource.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/resource.txt">
+        <entry file="file://$PROJECT_DIR$/public/api/resource.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3150">
+            <state relative-caret-position="95">
               <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="APIFramework.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/APIFramework.php">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/api/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
-              <folding>
-                <element signature="e#39#126#0#PHP" expanded="false" />
-                <element signature="e#161#257#0#PHP" expanded="false" />
-                <element signature="e#291#364#0#PHP" expanded="false" />
-                <element signature="e#400#572#0#PHP" expanded="false" />
-                <element signature="e#604#828#0#PHP" expanded="false" />
-                <element signature="e#865#936#0#PHP" expanded="false" />
-                <element signature="e#970#1151#0#PHP" expanded="false" />
-                <element signature="n#__construct#0;n#APIFramework#0;n#!!top" expanded="false" />
-                <element signature="e#1644#1776#0#PHP" expanded="false" />
-                <element signature="e#1912#2388#0#PHP" expanded="false" />
-                <element signature="e#2007#2378#0#PHP" expanded="false" />
-                <element signature="e#2065#2152#0#PHP" expanded="false" />
-                <element signature="e#2169#2250#0#PHP" expanded="false" />
-                <element signature="e#2267#2364#0#PHP" expanded="false" />
-                <element signature="e#2453#3069#0#PHP" expanded="false" />
-                <element signature="e#2517#2678#0#PHP" expanded="false" />
-                <element signature="e#2691#2786#0#PHP" expanded="false" />
-                <element signature="e#2799#2958#0#PHP" expanded="false" />
-                <element signature="e#2971#3059#0#PHP" expanded="false" />
-                <element signature="e#3081#3214#0#PHP" expanded="false" />
-                <element signature="n#processAPI#0;n#APIFramework#0;n#!!top" expanded="false" />
-                <element signature="e#3258#3376#0#PHP" expanded="false" />
-                <element signature="e#3459#3598#0#PHP" expanded="false" />
-                <element signature="n#_cleanInputs#0;n#APIFramework#0;n#!!top" expanded="false" />
-                <element signature="e#3682#3899#0#PHP" expanded="false" />
-                <element signature="e#3717#3820#0#PHP" expanded="false" />
-                <element signature="e#3831#3899#0#PHP" expanded="false" />
-                <element signature="e#3941#4197#0#PHP" expanded="false" />
-                <element signature="n#_response#0;n#APIFramework#0;n#!!top" expanded="false" />
-                <element signature="e#4377#4562#0#PHP" expanded="false" />
-                <element signature="n#_requestStatus#0;n#APIFramework#0;n#!!top" expanded="false" />
-                <element signature="e#4626#4783#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -415,6 +397,7 @@
         <option value="$PROJECT_DIR$/api/APIKeyFactory.php" />
         <option value="$PROJECT_DIR$/api/DeltsManagerAPI.php" />
         <option value="$PROJECT_DIR$/public/includes/.htaccess" />
+        <option value="$PROJECT_DIR$/public/api/api.php" />
       </list>
     </option>
   </component>
@@ -505,6 +488,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtd-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtd-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -602,12 +603,12 @@
       <workItem from="1473786446650" duration="615000" />
       <workItem from="1479761021163" duration="980000" />
       <workItem from="1481507083541" duration="1625000" />
-      <workItem from="1481663350887" duration="257000" />
+      <workItem from="1481663350887" duration="441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94386000" />
+    <option name="totallyTimeSpent" value="94570000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -620,9 +621,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0078125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -749,7 +750,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/APIKeyFactory.php">
+    <entry file="file://$PROJECT_DIR$/public/api/APIKeyFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="75" column="48" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="48" />
@@ -768,7 +769,6 @@
             <element signature="e#1327#1411#0#PHP" expanded="false" />
             <element signature="e#1446#1585#0#PHP" expanded="false" />
             <element signature="e#1590#1726#0#PHP" expanded="false" />
-            <element signature="e#1732#2197#0#PHP" expanded="false" />
             <element signature="e#2202#2514#0#PHP" expanded="false" />
             <element signature="e#2391#2487#0#PHP" expanded="false" />
           </folding>
@@ -782,7 +782,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/User.php">
+    <entry file="file://$PROJECT_DIR$/public/api/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
@@ -797,7 +797,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/api.php">
+    <entry file="file://$PROJECT_DIR$/public/api/api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
@@ -808,7 +808,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/test.php" />
-    <entry file="file://$PROJECT_DIR$/api/APIFramework.php">
+    <entry file="file://$PROJECT_DIR$/public/api/APIFramework.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
@@ -832,7 +832,6 @@
             <element signature="e#2691#2786#0#PHP" expanded="false" />
             <element signature="e#2799#2958#0#PHP" expanded="false" />
             <element signature="e#2971#3059#0#PHP" expanded="false" />
-            <element signature="e#3081#3214#0#PHP" expanded="false" />
             <element signature="n#processAPI#0;n#APIFramework#0;n#!!top" expanded="false" />
             <element signature="e#3258#3376#0#PHP" expanded="false" />
             <element signature="e#3459#3598#0#PHP" expanded="false" />
@@ -849,7 +848,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
+    <entry file="file://$PROJECT_DIR$/public/api/DeltsManagerAPI.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2596">
           <caret line="264" column="44" selection-start-line="264" selection-start-column="39" selection-end-line="264" selection-end-column="44" />
@@ -883,7 +882,6 @@
             <element signature="e#4971#5072#0#PHP" expanded="false" />
             <element signature="n#account_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#5157#5897#0#PHP" expanded="false" />
-            <element signature="e#6716#6809#0#PHP" expanded="false" />
             <element signature="n#account_punts#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#6857#7221#0#PHP" expanded="false" />
             <element signature="e#7717#7846#0#PHP" expanded="false" />
@@ -1217,7 +1215,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/ck.pem">
+    <entry file="file://$PROJECT_DIR$/public/includes/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <marker date="1481663399000" expanded="true" signature="408:592" ph="&lt;IfModule mod rewrite.c&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/api/ck.pem">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1225,44 +1233,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/api.php">
+    <entry file="file://$PROJECT_DIR$/public/api/APIFramework.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/push.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/resource.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/APIFramework.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+          <caret line="102" column="53" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="53" />
           <folding>
             <element signature="e#39#126#0#PHP" expanded="false" />
             <element signature="e#161#257#0#PHP" expanded="false" />
@@ -1283,7 +1257,6 @@
             <element signature="e#2691#2786#0#PHP" expanded="false" />
             <element signature="e#2799#2958#0#PHP" expanded="false" />
             <element signature="e#2971#3059#0#PHP" expanded="false" />
-            <element signature="e#3081#3214#0#PHP" expanded="false" />
             <element signature="n#processAPI#0;n#APIFramework#0;n#!!top" expanded="false" />
             <element signature="e#3258#3376#0#PHP" expanded="false" />
             <element signature="e#3459#3598#0#PHP" expanded="false" />
@@ -1300,10 +1273,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/APIKeyFactory.php">
+    <entry file="file://$PROJECT_DIR$/public/api/APIKeyFactory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="464">
+          <caret line="84" column="50" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="50" />
           <folding>
             <element signature="e#146#274#0#PHP" expanded="false" />
             <element signature="e#279#453#0#PHP" expanded="false" />
@@ -1319,17 +1292,16 @@
             <element signature="e#1327#1411#0#PHP" expanded="false" />
             <element signature="e#1446#1585#0#PHP" expanded="false" />
             <element signature="e#1590#1726#0#PHP" expanded="false" />
-            <element signature="e#1732#2197#0#PHP" expanded="false" />
             <element signature="e#2202#2514#0#PHP" expanded="false" />
             <element signature="e#2391#2487#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/DeltsManagerAPI.php">
+    <entry file="file://$PROJECT_DIR$/public/api/DeltsManagerAPI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="433" column="7" selection-start-line="433" selection-start-column="7" selection-end-line="433" selection-end-column="7" />
+        <state relative-caret-position="224">
+          <caret line="190" column="27" selection-start-line="190" selection-start-column="26" selection-end-line="190" selection-end-column="27" />
           <folding>
             <element signature="e#255#318#0#PHP" expanded="false" />
             <element signature="e#424#454#0#PHP" expanded="false" />
@@ -1360,7 +1332,6 @@
             <element signature="e#4971#5072#0#PHP" expanded="false" />
             <element signature="n#account_duties#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#5157#5897#0#PHP" expanded="false" />
-            <element signature="e#6716#6809#0#PHP" expanded="false" />
             <element signature="n#account_punts#0;n#DeltsManagerAPI#0;n#!!top" expanded="false" />
             <element signature="e#6857#7221#0#PHP" expanded="false" />
             <element signature="e#7717#7846#0#PHP" expanded="false" />
@@ -1547,11 +1518,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/includes/.htaccess">
+    <entry file="file://$PROJECT_DIR$/public/api/push.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        <state relative-caret-position="165">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/api/resource.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="210" column="14" selection-start-line="210" selection-start-column="14" selection-end-line="210" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/api/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/api/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#92#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
