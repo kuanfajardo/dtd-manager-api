@@ -48,11 +48,11 @@ class DeltsManagerAPI extends APIFramework
         parent::__construct($request);
 
         // TODO: delete when function
-        define("USER_USER", 0);
-        define("USER_CHECKER", 1);
-        define("USER_HOUSE_MANAGER", 2);
-        define("USER_HONOR_BOARD", 3);
-        define("USER_ADMIN", 4);
+//        define("USER_USER", 0);
+//        define("USER_CHECKER", 1);
+//        define("USER_HOUSE_MANAGER", 2);
+//        define("USER_HONOR_BOARD", 3);
+//        define("USER_ADMIN", 4);
 
         if (!$this->endpoint == 'authenticate') {
             $json_data = json_decode($this->file);
