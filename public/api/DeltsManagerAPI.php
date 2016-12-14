@@ -491,65 +491,69 @@ class DeltsManagerAPI extends APIFramework
      * @throws Exception KeyError, DBError
      */
     private function checkoff_duty() {
-        $json_data = json_decode($this->file);
+        if(user_authorized([USER_CHECKER, USER_HOUSE_MANAGER, USER_ADMIN])) {
+            $json_data = json_decode($this->file);
 
-        if(array_key_exists("comments", $json_data)) {
-            $comments = $this->mysqli->real_escape_string($json_data["comments"]);
-        } else {
-            $comments = "";
-        }
+            if (array_key_exists("comments", $json_data)) {
+                $comments = $this->mysqli->real_escape_string($json_data["comments"]);
+            } else {
+                $comments = "";
+            }
 
-        if(array_key_exists("duty_id", $json_data)) {
-            $duty_id = $this->mysqli->real_escape_string($json_data["duty_id"]);
-        } else {
-            throw new Exception("Duty ID not found");
-        }
+            if (array_key_exists("duty_id", $json_data)) {
+                $duty_id = $this->mysqli->real_escape_string($json_data["duty_id"]);
+            } else {
+                throw new Exception("Duty ID not found");
+            }
 
-        /*
-        if(array_key_exists("user_id", $json_data)) {
-            $user = $this->mysqli->real_escape_string($json_data["user_id"]);
-        } else {
-            throw new Exception("User ID not found");
-        }
-        */
+            /*
+            if(array_key_exists("user_id", $json_data)) {
+                $user = $this->mysqli->real_escape_string($json_data["user_id"]);
+            } else {
+                throw new Exception("User ID not found");
+            }
+            */
 
-        $checker = $this->User->user_id;
+            $checker = $this->User->user_id;
 
-        //$stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
-        $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,checker={$checker} WHERE id=?");
-        $stmt->bind_param("sii",$comments,$duty_id);
-        $stmt->execute();
+            //$stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,user=?,checker={$checker} WHERE id=?");
+            $stmt = $this->mysqli->prepare("UPDATE houseduties SET checktime=CURRENT_TIMESTAMP,checkcomments=?,checker={$checker} WHERE id=?");
+            $stmt->bind_param("sii", $comments, $duty_id);
+            $stmt->execute();
 
-        if ($stmt->affected_rows <= 0) {
-            throw new Exception("DB error: failed to checkoff");
-        }
+            if ($stmt->affected_rows <= 0) {
+                throw new Exception("DB error: failed to checkoff");
+            }
 
-        // added "first, and $user" to not delete {$user} in email thingy below
-        $stmt = $this->mysqli->prepare("SELECT first, email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
-        $stmt->bind_param("i",$duty_id);
-        $stmt->bind_result($user, $user_email);
-        $stmt->execute();
-        $stmt->fetch();
-        $stmt->free_result();
+            // added "first, and $user" to not delete {$user} in email thingy below
+            $stmt = $this->mysqli->prepare("SELECT first, email FROM users WHERE id=(SELECT user FROM houseduties WHERE id=?)");
+            $stmt->bind_param("i", $duty_id);
+            $stmt->bind_result($user, $user_email);
+            $stmt->execute();
+            $stmt->fetch();
+            $stmt->free_result();
 
-        if (!($stmt->affected_rows > 0)) {
+            if (!($stmt->affected_rows > 0)) {
+                return array(
+                    'status' => 2,
+                    'description' => 'Email not sent'
+                );
+            }
+
+            $checker_name = $this->User->user_first_name;
+
+            $message = "{$user},\r\n\r\n{$checker_name} just checked off one of your duties.\r\n\r\nCheers,\r\n\tDM";
+            $subject = "Checked Off";
+
+            send_email($user_email, $subject, $message);
+
             return array(
-                'status' => 2,
-                'description' => 'Email not sent'
+                'status' => 1,
+                'description' => 'Email sent'
             );
+        } else {
+            throw new Exception("User Not Authorized");
         }
-
-        $checker_name = $this->User->user_first_name;
-
-        $message = "{$user},\r\n\r\n{$checker_name} just checked off one of your duties.\r\n\r\nCheers,\r\n\tDM";
-        $subject = "Checked Off";
-
-        send_email($user_email,$subject,$message);
-
-        return array(
-            'status' => 1,
-            'description' => 'Email sent'
-        );
     }
 
     /**
@@ -559,40 +563,44 @@ class DeltsManagerAPI extends APIFramework
      * @throws Exception KeyNotFound, DBError
      */
     private function punt() {
-        $json_data = json_decode($this->file);
+        if(user_authorized([USER_ADMIN, USER_HOUSE_MANAGER])) {
+            $json_data = json_decode($this->file);
 
-        if(array_key_exists("punted_id", $json_data)) {
-            $the_punted = $this->mysqli->$json_data["punted_id"];
-        } else {
-            throw new Exception("User to be punted not found");
-        }
-
-        if(array_key_exists("comments", $json_data)) {
-            $comments = $this->mysqli->real_escape_string($json_data["comments"]);
-        } else {
-            $comments = "";
-        }
-
-        $user = $this->User->user_id;
-
-        $success = true;
-
-        foreach ($the_punted as $user_to_be_punted) {
-            $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
-            $stmt->bind_param("iis", $user_to_be_punted, $user, $comments);
-            $stmt->execute();
-
-            if (!$stmt->affected_rows > 0) {
-                $success = false;
+            if (array_key_exists("punted_id", $json_data)) {
+                $the_punted = $this->mysqli->$json_data["punted_id"];
+            } else {
+                throw new Exception("User to be punted not found");
             }
-        }
 
-        if ($success) {
-            return array(
-                'status' => 1
-            );
+            if (array_key_exists("comments", $json_data)) {
+                $comments = $this->mysqli->real_escape_string($json_data["comments"]);
+            } else {
+                $comments = "";
+            }
+
+            $user = $this->User->user_id;
+
+            $success = true;
+
+            foreach ($the_punted as $user_to_be_punted) {
+                $stmt = $this->mysqli->prepare("INSERT INTO punts(user,given_by,comment) VALUES(?,?,?)");
+                $stmt->bind_param("iis", $user_to_be_punted, $user, $comments);
+                $stmt->execute();
+
+                if (!$stmt->affected_rows > 0) {
+                    $success = false;
+                }
+            }
+
+            if ($success) {
+                return array(
+                    'status' => 1
+                );
+            } else {
+                throw new Exception("DB error: at least one error");
+            }
         } else {
-            throw new Exception("DB error: at least one error");
+            throw new Exception("User Not Authorized to give punt");
         }
 
     }
